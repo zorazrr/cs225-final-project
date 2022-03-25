@@ -18,4 +18,4 @@
 
 ### Signatures
 
-Ellie Chang (elliepc2) 
+Ellie Chang (elliepc2) Grace Zhang (gracewz2)
