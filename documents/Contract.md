@@ -1,6 +1,6 @@
-## Team Contract
+# Team Contract
 
-### Communication
+## Communication
 
 1. **Team Meetings** Our team will meet every Monday from 4-6 PM using Zoom. During the meeting, each team member will contribute to a notes document on Google Docs, time-stamped for each meeting. The team will also work together to draft the weekly DEVELOPMENT LOG entry.
 
@@ -8,7 +8,7 @@
 
 3. **Respect** During our meetings, each team member will act in a respectful manner, ensuring that every other team member has had a chance to speak and voice their opinions. Furthermore, while unanimous agreement is preferred, all decisions will be made through majority opinion. By signing this document, each team member agrees to adhering to the guidelines written on this contract.
 
-### Collaboration
+## Collaboration
 
 1. **Work Distribution** The main goal and deliverables for each week will be decided by the entire team. Each member will volunteer to work on at least one deliverable. If no one volunteers, someone will be randomly assigned to work on that task; if the task is rather large, another team member will also be randomly assigned to the task to work on it as a pair. Adjustments will be made as needed.
 
@@ -16,6 +16,6 @@
 
 3. **Conflict Resolution** All conflicts within the team will be solved through majority rule. If there is a split amongst all three team members, the decision will be randomly made through a game of chance such as a random number generator.
 
-### Signatures
+## Signatures
 
 Ellie Chang (elliepc2) Grace Zhang (gracewz2) Zora Zhang (ruoranz2)
