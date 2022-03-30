@@ -4,6 +4,7 @@
 #include "road.h"
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -15,6 +16,9 @@ public:
     // Default constructor 
     Graph();
     // Constructor helpers 
+    void createNodes();
+    vector<Road*> createRoads();
+    
     void createConnections(vector<Road*> roads);
 
     // Traversal 

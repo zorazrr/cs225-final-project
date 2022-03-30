@@ -32,8 +32,8 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME) : output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cpp
-	$(CXX) $(CXXFLAGS) main.cpp
+main.o : main.cpp graph.cpp
+	$(CXX) $(CXXFLAGS) main.cpp graph.cpp
 
 test: output_msg catchmain.o tests.o PNG.o HSLAPixel.o lodepng.o 
 	$(LD) catchmain.o tests.o PNG.o HSLAPixel.o lodepng.o lab_intro.o $(LDFLAGS) -o test

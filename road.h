@@ -11,7 +11,7 @@ public:
     // Default Constructor
     Road();
     // Constructor
-    Road(int id, double legnth, int start, int end);
+    Road(int id, int start, int end, int length);
     // Getters
     int getId();
     double getLength();
