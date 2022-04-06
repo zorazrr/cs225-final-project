@@ -1,6 +1,10 @@
 #include "graph.h"
 
-Graph::Graph(string nodes_file, string roads_file) {
+Graph::Graph() {
+   
+}
+
+void Graph::makeGraph(string nodes_file, string roads_file) {
     createNodes(nodes_file);
     vector<Road*> roads = createRoads(roads_file);
     createConnections(roads);

@@ -14,8 +14,10 @@ class Graph
 {
 public:
     // Default constructor 
-    Graph(string nodes_file, string roads_file);
+    Graph();
+
     // Constructor helpers 
+    void makeGraph(string nodes_file, string roads_file);
     void createNodes(string nodes_file);
     vector<Road*> createRoads(string roads_file);
     
