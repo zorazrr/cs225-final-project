@@ -14,10 +14,10 @@ class Graph
 {
 public:
     // Default constructor 
-    Graph();
+    Graph(string nodes_file, string roads_file);
     // Constructor helpers 
-    void createNodes();
-    vector<Road*> createRoads();
+    void createNodes(string nodes_file);
+    vector<Road*> createRoads(string roads_file);
     
     void createConnections(vector<Road*> roads);
 
@@ -28,6 +28,8 @@ public:
     
     // Getters
     vector<Road *> getRoad(int id);
+    vector<Node *> getNodes() {return nodes_;}
+    vector<vector<Road *>> getConnections() {return connections_;}
 
 private:
     vector<Node *> nodes_;
