@@ -28,6 +28,25 @@ vector<Road*> getSmallRoads() {
     return roads;
 }
 
+vector<Node*> getSmallNodes() {
+    string nodes_file = "./data/small_test_nodes.txt";
+
+    vector<Node*> nodes;
+    Node* node1 = new Node(0, -121.904167, 41.974556);
+    Node* node2 = new Node(1, -121.902153, 41.974766);
+    Node* node3 = new Node(2, -121.896790, 41.988075);
+    Node* node4 = new Node(3, -115.257767, 33.832241);
+    Node* node5 = new Node(4, -122.404907, 39.053646);
+
+    nodes.push_back(node1);
+    nodes.push_back(node2);
+    nodes.push_back(node3);
+    nodes.push_back(node4);
+    nodes.push_back(node5);
+
+    return nodes;
+}
+
 TEST_CASE("test_create_roads", "[weight=5][graph]") {
     vector<Road*> expectedRoads = getSmallRoads();
 
@@ -42,7 +61,18 @@ TEST_CASE("test_create_roads", "[weight=5][graph]") {
 }
 
 TEST_CASE("test_create_nodes", "[weight=5][graph]") {
+    vector<Node*> expectedNodes = getSmallNodes();
 
+    Graph g;
+    g.createNodes("./data/small_test_nodes.txt");
+    vector<Node*> nodes = g.getNodes();
+
+    REQUIRE(expectedNodes.size() == nodes.size());
+    REQUIRE(g.getConnections().size() == nodes.size());
+
+    for (unsigned i = 0; i < expectedNodes.size(); ++i) {
+        REQUIRE(expectedNodes.at(i) == nodes.at(i));
+    }
 }
 
 TEST_CASE("test_create_connections", "[weight=5][graph]") {

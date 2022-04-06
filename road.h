@@ -25,7 +25,7 @@ public:
 
     // Overload operators
     bool operator<(Road const &other) const;
-    //bool operator==(Road const& other) const;
+    bool operator==(Road const& other) const;
 
 private:
     int id_;
