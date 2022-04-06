@@ -20,6 +20,9 @@ public:
     void setId(int id);
     void setLatitude(double latitude);
     void setLongitude(double longitude);
+    // Calculate distance between two nodes
+    double toRadians(const double degree);
+    double calcDistance(Node& other);
 
 private:
     int id_;
