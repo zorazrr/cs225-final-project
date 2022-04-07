@@ -47,6 +47,21 @@ vector<Node*> getSmallNodes() {
     return nodes;
 }
 
+vector<vector<Road *>> getSmallConnections() {
+    vector<vector<Road *>> connections;
+    vector<Road*> roads = getSmallRoads();
+
+    for (unsigned i = 0; i < roads.size(); ++i) {
+        Road* road = roads.at(i);
+        int startId = road->getStart();
+        int endId = road->getEnd();
+
+        connections.at(startId).push_back(road);
+        connections.at(endId).push_back(road);
+    }
+    return connections;
+}
+
 TEST_CASE("test_create_roads", "[weight=5][graph]") {
     vector<Road*> expectedRoads = getSmallRoads();
 
@@ -76,5 +91,15 @@ TEST_CASE("test_create_nodes", "[weight=5][graph]") {
 }
 
 TEST_CASE("test_create_connections", "[weight=5][graph]") {
+    vector<vector<Road*>> expectedConnections = getSmallConnections();
 
+    Graph g;
+    g.makeGraph("./data/small_test_nodes.txt", "./data/small_test_roads.txt");
+    vector<vector<Road*>> connections = g.getConnections();
+
+    REQUIRE(expectedConnections.size() == connections.size());
+
+    for (unsigned i = 0; i < expectedConnections.size(); ++i) {
+        REQUIRE(expectedConnections.at(i).size() == connections.at(i).size());
+    }
 }
