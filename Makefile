@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o
+OBJS = main.o graph.o node.o road.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -32,8 +32,8 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME) : output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cpp graph.cpp
-	$(CXX) $(CXXFLAGS) main.cpp graph.cpp
+main.o : main.cpp graph.cpp node.cpp road.cpp
+	$(CXX) $(CXXFLAGS) main.cpp graph.cpp node.cpp road.cpp
 
 test: output_msg catchmain.o tests.o PNG.o HSLAPixel.o lodepng.o 
 	$(LD) catchmain.o tests.o PNG.o HSLAPixel.o lodepng.o lab_intro.o $(LDFLAGS) -o test
@@ -46,3 +46,14 @@ tests.o : tests/tests.cpp cs225/catch/catch.hpp
 
 clean :
 	-rm -f *.o $(EXENAME) test
+
+# # Executable names:
+# EXE = graph
+# TEST = test
+
+# # Add all object files needed for compiling:
+# EXE_OBJ = main.o
+# OBJS = main.o
+
+# # Use the cs225 makefile template:
+# include cs225/make/cs225.mk

@@ -11,24 +11,25 @@ public:
     // Default Constructor
     Road();
     // Constructor
-    Road(int id, int start, int end, int length);
+    Road(int id, int start, int end, double length);
     // Getters
-    int getId();
-    double getLength();
-    int getStart();
-    int getEnd();
+    int getId() const;
+    double getLength() const;
+    int getStart() const;
+    int getEnd() const;
     // Setters
-    void setId();
-    void setLength();
-    void setStart();
-    void setEnd();
+    void setId(int id);
+    void setLength(double legnth);
+    void setStart(int start);
+    void setEnd(int end);
 
     // Overload operators
     bool operator<(Road const &other) const;
+    bool operator==(const Road& other) const;
 
 private:
     int id_;
-    double length_;
+    int length_;
     int start_;
     int end_;
 };
