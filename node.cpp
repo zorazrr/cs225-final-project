@@ -1,4 +1,5 @@
 #include "node.h"
+#include <cmath>
 
 Node::Node() {
     id_ = 0;
@@ -12,15 +13,15 @@ Node::Node(int id, double latitude, double longitude) {
     longitude_ = longitude;
 }
 
-int Node::getId() {
+int Node::getId() const {
     return id_;
 }
 
-double Node::getLatitude() {
+double Node::getLatitude() const {
     return latitude_;
 }
 
-double Node::getLongitude() {
+double Node::getLongitude() const {
     return longitude_;
 }
 
@@ -58,6 +59,6 @@ double Node::calcDistance(Node& other) {
 }
 
 std::ostream &operator<<(std::ostream &out, const Node &n) {
-    out << id << ": (" << latitude_ << ", " << longitude_ << ")";
+    out << n.getId() << ": (" << n.getLatitude() << ", " << n.getLongitude() << ")";
     return out;
 }

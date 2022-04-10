@@ -19,17 +19,17 @@ public:
     int getEnd() const;
     // Setters
     void setId(int id);
-    void setLength(double length);
+    void setLength(double legnth);
     void setStart(int start);
     void setEnd(int end);
 
     // Overload operators
-    bool operator<(const Road& other) const;
-    bool operator==(const Road&  other) const;
+    bool operator<(Road const &other) const;
+    bool operator==(const Road& other) const;
 
 private:
     int id_;
+    int length_;
     int start_;
     int end_;
-    double length_;
 };

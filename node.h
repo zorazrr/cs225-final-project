@@ -13,9 +13,9 @@ public:
     // Constructor
     Node(int id, double latitude, double longitude);
     // Getters
-    int getId();
-    double getLatitude();
-    double getLongitude();
+    int getId() const;
+    double getLatitude() const;
+    double getLongitude() const;
     // Setters
     void setId(int id);
     void setLatitude(double latitude);
