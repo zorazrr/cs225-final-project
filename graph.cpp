@@ -1,13 +1,17 @@
 #include "graph.h"
 
 Graph::Graph() {
-    createNodes();
-    vector<Road*> roads = createRoads();
+   
+}
+
+void Graph::makeGraph(string nodes_file, string roads_file) {
+    createNodes(nodes_file);
+    vector<Road*> roads = createRoads(roads_file);
     createConnections(roads);
 }
 
-void Graph::createNodes() {
-    ifstream ifs{"./data/nodes.txt"};
+void Graph::createNodes(string nodes_file) {
+    ifstream ifs(nodes_file);
 
     if (ifs.is_open()) {
         int id;
@@ -24,8 +28,8 @@ void Graph::createNodes() {
     }
 }
 
-vector<Road*> Graph::createRoads() {
-    ifstream ifs("./data/roads.txt");
+vector<Road*> Graph::createRoads(string roads_file) {
+    ifstream ifs(roads_file);
     vector<Road*> roads;
 
     if (ifs.is_open()) {
