@@ -35,8 +35,8 @@ $(EXENAME) : output_msg $(OBJS)
 main.o : main.cpp graph.cpp node.cpp road.cpp
 	$(CXX) $(CXXFLAGS) main.cpp graph.cpp node.cpp road.cpp
 
-test: output_msg catchmain.o tests.o PNG.o HSLAPixel.o lodepng.o 
-	$(LD) catchmain.o tests.o PNG.o HSLAPixel.o lodepng.o lab_intro.o $(LDFLAGS) -o test
+test: output_msg catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp
+	$(LD) catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp $(LDFLAGS) -o test
 
 catchmain.o : cs225/catch/catchmain.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
