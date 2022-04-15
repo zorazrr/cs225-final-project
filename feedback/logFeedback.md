@@ -1,3 +1,10 @@
+## Week 2
+### Grade
+Pass
+
+### Comments
+Thanks for continuing to reach out and check in! Great work so far.
+
 ## Week 1
 ### Grade
 Pass
