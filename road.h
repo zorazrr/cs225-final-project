@@ -29,7 +29,7 @@ public:
 
 private:
     int id_;
-    int length_;
     int start_;
     int end_;
+    double length_;
 };

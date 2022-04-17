@@ -8,18 +8,22 @@ vector<pair<double, int>> dijkstra(Graph g, int start) {
     setUpPaths(paths, connections.size());
     paths.at(start).first = 0;
 
-    queue<int> visited;
-    visited.push(start);
+    priority_queue<int> toVisit;
+    toVisit.push(start);
 
-    while (!visited.empty()) {
-        int node = visited.front();
+    while (!toVisit.empty()) {
+        int node = toVisit.pop_back();
         double distance = paths.at(node).first;
-        visited.pop();
+        std::cout << node << std::endl;
         int closestNode = -1;
 
         for (unsigned i = 0; i < connections.at(node).size(); ++i) {
             Road* road = connections.at(node).at(i);
             int adjacentNode = road->getEnd();
+
+            if (paths.at(adjacentNode).second == -1) {
+                toVisit.push(adjacentNode);
+            }
 
             if (paths.at(adjacentNode).first > distance + road->getLength()) {
                 paths.at(adjacentNode).first = distance + road->getLength();
@@ -27,10 +31,6 @@ vector<pair<double, int>> dijkstra(Graph g, int start) {
             }
             if (closestNode == -1) closestNode = adjacentNode;
             else if (paths.at(adjacentNode).first < paths.at(closestNode).first) closestNode = adjacentNode;
-
-            if (paths.at(adjacentNode).second == -1) {
-                visited.push(adjacentNode);
-            }
         }
     }
     return paths;
