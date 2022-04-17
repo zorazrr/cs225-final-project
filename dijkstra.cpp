@@ -4,33 +4,36 @@
 vector<pair<double, int>> dijkstra(Graph g, int start) {
     vector<vector<Road*>> connections = g.getConnections();
     
+    // first: length of shortest path to start, second: predecessor
     vector<pair<double, int>> paths; 
     setUpPaths(paths, connections.size());
-    paths.at(start).first = 0;
+    paths.at(start).first = 0; // start is distance 0 from itself
 
-    priority_queue<int> toVisit;
-    toVisit.push(start);
+    priority_queue<NodePair> toVisit;
+    toVisit.push(NodePair(start, 0));
 
     while (!toVisit.empty()) {
-        int node = toVisit.pop_back();
-        double distance = paths.at(node).first;
-        std::cout << node << std::endl;
-        int closestNode = -1;
+        // visit the node with highest priority (shortest distance) in toVisit 
+        NodePair pair = toVisit.top();
+        toVisit.pop();
+        int node = pair.getNode();
+        double distance = pair.getLength();
 
+        // iterate through nodes adjacent to node
         for (unsigned i = 0; i < connections.at(node).size(); ++i) {
             Road* road = connections.at(node).at(i);
-            int adjacentNode = road->getEnd();
+            int adjacentNode = road->getEnd() == node? road->getStart() : road->getEnd();
 
+            // if we haven't visited this node yet, push to queue
             if (paths.at(adjacentNode).second == -1) {
-                toVisit.push(adjacentNode);
+                toVisit.push(NodePair(adjacentNode, distance + road->getLength()));
             }
 
+            // if the node's current path is shorter than its previous, update
             if (paths.at(adjacentNode).first > distance + road->getLength()) {
                 paths.at(adjacentNode).first = distance + road->getLength();
                 paths.at(adjacentNode).second = node;
             }
-            if (closestNode == -1) closestNode = adjacentNode;
-            else if (paths.at(adjacentNode).first < paths.at(closestNode).first) closestNode = adjacentNode;
         }
     }
     return paths;
@@ -44,5 +47,18 @@ vector<pair<double, int>> dijkstra(Graph g, int start) {
 void setUpPaths(vector<pair<double, int>>& paths, unsigned size) {
     for (unsigned i = 0; i < size; ++i) {
         paths.push_back(make_pair<double, int>(std::numeric_limits<double>::max(), -1));
+    }
+}
+
+/**
+* @param connections vector of vectors, where each vector contains the roads connected to the corresponding node
+*/
+void printConnections(vector<vector<Road*>>& connections) {
+    for (unsigned i = 0; i < connections.size(); ++i) {
+        std::cout << "node id: " << i << std::endl;
+        for (unsigned j = 0; j < connections.at(i).size(); ++j) {
+            std::cout << connections.at(i).at(j)->getStart() << " " << connections.at(i).at(j)->getEnd() << " | ";
+        }
+        std::cout << " " << std::endl;
     }
 }

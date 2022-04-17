@@ -24,6 +24,8 @@ public:
     double toRadians(const double degree);
     double calcDistance(Node& other);
 
+    bool operator==(const Node other) const;
+
 private:
     int id_;
     double latitude_;

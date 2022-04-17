@@ -62,3 +62,7 @@ std::ostream &operator<<(std::ostream &out, const Node &n) {
     out << n.getId() << ": (" << n.getLatitude() << ", " << n.getLongitude() << ")";
     return out;
 }
+
+bool Node::operator==(const Node other) const {
+    return (latitude_ == other.getLatitude() && longitude_ == other.getLongitude());
+}
