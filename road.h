@@ -25,11 +25,15 @@ public:
 
     // Overload operators
     bool operator<=(const Road other) const;
+    bool operator<(const Road other) const;
+    bool operator>=(const Road other) const;
+    bool operator>(const Road other) const;
     bool operator==(const Road other) const;
+    bool operator!=(const Road other) const;
 
 private:
     int id_;
-    double length_;
     int start_;
     int end_;
+    double length_;
 };
