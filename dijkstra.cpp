@@ -1,6 +1,5 @@
 #include "dijkstra.h"
 
-// figure out what to do if not all connected
 vector<pair<double, int>> dijkstra(Graph g, int start) {
     vector<vector<Road*>> connections = g.getConnections();
     
@@ -47,6 +46,21 @@ vector<pair<double, int>> dijkstra(Graph g, int start) {
 void setUpPaths(vector<pair<double, int>>& paths, unsigned size) {
     for (unsigned i = 0; i < size; ++i) {
         paths.push_back(make_pair<double, int>(std::numeric_limits<double>::max(), -1));
+    }
+}
+
+void printPath(vector<pair<double, int>>& paths, int start) {
+    for (unsigned i = 0; i < paths.size(); ++i) {
+        int curr = i;
+        std::cout << curr << ": [ ";
+
+        while (curr != start && paths.at(curr).second >= 0) {
+            curr = paths.at(curr).second;
+            std::cout << curr << " ";
+        }
+         std::cout << "]" << std::endl;
+        std::cout << "--------" << std::endl;
+       
     }
 }
 

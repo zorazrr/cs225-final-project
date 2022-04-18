@@ -18,6 +18,8 @@ void setUpPaths(vector<pair<double, int>>& paths, unsigned size);
 
 void printConnections(vector<vector<Road*>>& connections);
 
+void printPath(vector<pair<double, int>>& paths, int start);
+
 class NodePair {
 public:
     NodePair(int node, double length) {
