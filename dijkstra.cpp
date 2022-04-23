@@ -49,17 +49,26 @@ void setUpPaths(vector<pair<double, int>>& paths, unsigned size) {
     }
 }
 
+vector<int> getPath(vector<pair<double, int>>& paths, int start, int dest) {
+    vector<int> path;
+    int curr = dest;
+    while (curr != start && paths.at(curr).second >= 0) {
+        path.push_back(curr);
+        curr = paths.at(curr).second;
+    }
+    path.push_back(start);
+    return path;
+}
+
 void printPath(vector<pair<double, int>>& paths, int start) {
     for (unsigned i = 0; i < paths.size(); ++i) {
-        int curr = i;
-        std::cout << curr << ": [ ";
-
-        while (curr != start && paths.at(curr).second >= 0) {
-            curr = paths.at(curr).second;
-            std::cout << curr << " ";
+        vector<int> path = getPath(paths, start, i);
+        std::cout << i << ": ";
+        for (unsigned j = 0; j < path.size(); ++j) {
+            std::cout << path.at(j) << " ";
         }
-         std::cout << "]" << std::endl;
-        std::cout << "--------" << std::endl;
+        std::cout << " " << std::endl;
+        std::cout << "------" << std::endl;
        
     }
 }
