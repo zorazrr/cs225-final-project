@@ -57,6 +57,7 @@ vector<int> getPath(vector<pair<double, int>>& paths, int start, int dest) {
         curr = paths.at(curr).second;
     }
     path.push_back(start);
+    std::reverse(path.begin(), path.end());
     return path;
 }
 
