@@ -14,15 +14,27 @@
 
 using namespace std;
 
-vector<pair<double, int>> dijkstra(Graph g, int start);
+class Dijkstra {
+public:
+    Dijkstra(Graph g, int start);
 
-void setUpPaths(vector<pair<double, int>>& paths, unsigned size);
+    void executeDijkstra();
 
-void printConnections(vector<vector<Road*>>& connections);
+    vector<pair<double, int>> getPaths();
 
-void printPath(vector<pair<double, int>>& paths, int start);
+    void setUpPaths(unsigned size);
 
-vector<int> getPath(vector<pair<double, int>>& paths, int start);
+    void printConnections(vector<vector<Road*>>& connections);
+
+    void printPaths();
+
+    vector<int> getPath(int dest);
+
+private:
+    Graph g_;
+    int start_;
+    vector<pair<double, int>> paths_;
+};
 
 class NodePair {
 public:
