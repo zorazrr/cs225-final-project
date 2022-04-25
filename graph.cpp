@@ -8,6 +8,7 @@ void Graph::makeGraph(string nodes_file, string roads_file) {
     createNodes(nodes_file);
     vector<Road*> roads = createRoads(roads_file);
     createConnections(roads);
+    size_ = (int)(nodes_.size());
 }
 
 void Graph::createNodes(string nodes_file) {
@@ -57,5 +58,28 @@ void Graph::createConnections(vector<Road*> roads) {
 
         connections_.at(startId).push_back(road);
         connections_.at(endId).push_back(road);
+    }
+}
+
+void Graph::BFS(int id) {
+    bool *visited = new bool[size_];
+    for(int i = 0; i < size_; i++) {
+        visited[i] = false;
+    }
+    std::list<int> q;
+    visited[id] = true; // mark starting node as visited
+    q.push_back(id);
+
+    while(!q.empty()) {
+        int temp = q.front();
+        std::cout << temp << " ";
+        q.pop_front();
+        std::vector<Road*> connected = connections_.at(temp);
+        for(int x = 0; x < (int)(connected.size()); x++) {
+            if(!visited[*connected[x].getEnd()]) {
+                visited[*connected[x].getEnd()] = true;
+                q.push_back(*connected[x].getEnd());
+            }
+        }
     }
 }

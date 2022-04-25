@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <list>
 
 using namespace std;
 
@@ -23,8 +24,8 @@ public:
 
     void createConnections(vector<Road *> roads);
 
-    // Traversal
-    void DFS();
+    // BFS Traversal given a starting node
+    void BFS(int id);
     // Shortest Path
     void shortestPath();
 
@@ -36,5 +37,6 @@ public:
 
 private:
     vector<Node *> nodes_;
-    vector<vector<Road *>> connections_;
+    vector<vector<Road *> > connections_;
+    int size_; // number of nodes
 };
