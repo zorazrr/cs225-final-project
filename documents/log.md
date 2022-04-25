@@ -24,3 +24,12 @@ Grace: I implemented road.cpp, created smaller test files, and wrote extensive t
 Zora: This week I worked on getting the Makefile working. I also fixed some small mistakes throughout the files now that we are able to compile and the compiler starts to complain about things.
 
 Next week (now that our MakeFile has been set up), we’ll implement the Floyd-Warshall algorithm as well as the K-D tree.
+
+## Week 3
+This week, our goals were to construct the K-D tree class to work with our Node class and also to implement the DFS search within this K-D tree class. Furthermore, we decided to replace the Floyd-Warshall algorithm with Dijkstra’s algorithm because of its increased efficiency. It also better matches what we hope our function will return. Thus, we had an added task of implementing Dijkstra’s algorithm this week as well.
+
+Ellie: I was able to debug the Graph class test cases that we made from last week and get them to all pass. I also implemented the entire K-D tree class and wrote thorough test cases for it.
+
+Grace & Zora: We did pair programming to finish Dijkstra’s algorithm to look for the shortest path from one node to all other nodes. To accomplish it, we also created a NodePair class and integrated it with Min Heap Priority Queue in C++ STL library (so that the node with shortest distance is visited first). We also wrote test cases for Dijkstra’s algorithm. 
+
+Next week, we aim to complete Tarjan’s Strongly Connected Components as well as its test cases. 

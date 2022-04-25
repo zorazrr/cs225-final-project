@@ -34,6 +34,22 @@ bool Road::operator<=(const Road other) const {
     return (length_ <= other.getLength());
 }
 
+bool Road::operator<(const Road other) const {
+    return (length_ < other.getLength());
+}
+
+bool Road::operator>=(const Road other) const {
+    return (length_ >= other.getLength());
+}
+
+bool Road::operator>(const Road other) const {
+    return (length_ > other.getLength());
+}
+
 bool Road::operator==(const Road other) const {
     return (start_ == other.getStart() && end_ == other.getEnd());
+}
+
+bool Road::operator!=(const Road other) const {
+    return (start_ != other.getStart() && end_ != other.getEnd());
 }
