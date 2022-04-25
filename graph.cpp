@@ -76,9 +76,9 @@ void Graph::BFS(int id) {
         q.pop_front();
         std::vector<Road*> connected = connections_.at(temp);
         for(int x = 0; x < (int)(connected.size()); x++) {
-            if(!visited[*connected[x].getEnd()]) {
-                visited[*connected[x].getEnd()] = true;
-                q.push_back(*connected[x].getEnd());
+            if(!visited[connected[x]->getEnd()]) {
+                visited[connected[x]->getEnd()] = true;
+                q.push_back(connected[x]->getEnd());
             }
         }
     }
