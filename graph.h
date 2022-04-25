@@ -14,25 +14,26 @@ using namespace std;
 class Graph
 {
 public:
-    // Default constructor 
+    // Default constructor
     Graph();
 
-    // Constructor helpers 
+    // Constructor helpers
     void makeGraph(string nodes_file, string roads_file);
     void createNodes(string nodes_file);
-    vector<Road*> createRoads(string roads_file);
-    
-    void createConnections(vector<Road*> roads);
+    vector<Road *> createRoads(string roads_file);
+
+    void createConnections(vector<Road *> roads);
 
     // BFS Traversal given a starting node
     void BFS(int id);
-    // Shortest Path 
+    // Shortest Path
     void shortestPath();
-    
+
     // Getters
     vector<Road *> getRoad(int id);
-    vector<Node *> getNodes() {return nodes_;}
-    vector<vector<Road *>> getConnections() {return connections_;}
+    vector<Node *> getNodes() { return nodes_; }
+    vector<vector<Road *>> getConnections() { return connections_; }
+    int getNumNodes() { return nodes_.size(); }
 
 private:
     vector<Node *> nodes_;
