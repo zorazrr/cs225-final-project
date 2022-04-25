@@ -33,3 +33,13 @@ Ellie: I was able to debug the Graph class test cases that we made from last wee
 Grace & Zora: We did pair programming to finish Dijkstra’s algorithm to look for the shortest path from one node to all other nodes. To accomplish it, we also created a NodePair class and integrated it with Min Heap Priority Queue in C++ STL library (so that the node with shortest distance is visited first). We also wrote test cases for Dijkstra’s algorithm. 
 
 Next week, we aim to complete Tarjan’s Strongly Connected Components as well as its test cases. 
+
+## Week 4 
+This week, our goals were to finish the BFS algorithm for our graph class (instead of DFS) and implement the Welsh Powell graph coloring algorithm instead of Tarjan’s Strongly Connected Components, since we found that Tarjan’s wouldn’t work for an undirected graph. 
+
+Ellie: I implemented the BFS algorithm in the Graph class. Given a starting node, the algorithm prints out the BFS traversal as it goes. We decided to implement BFS so that it would represent a “strange traveler”; instead of wanting the shortest path by distance, someone might want the shortest path by number of roads taken. Perhaps it’s more scenic that way.
+
+Zora & Grace: After realizing Tarjan’s Strongly Connected Components Algorithm only works for directed graphs, we spent some time picking a new algorithm. Then we did pair programming to complete the Welsh Powell Algorithm for Graph Colorability. We also tested the algorithm on a small dataset. 
+
+Next week, we plan to tie up any loose ends and lingering parts. If time permits, we will also work on graphically rendering the results.
+
