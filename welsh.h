@@ -1,6 +1,7 @@
 #pragma once
 
 #include "graph.h"
+#include "nodedegreepair.cpp"
 
 #include <iostream>
 #include <fstream>
@@ -14,36 +15,21 @@
 
 using namespace std;
 
-class Welsh {
+class Welsh
+{
 public:
     Welsh(Graph g);
+    void setUpColors();
+    void setUpDegrees();
     void executeWelsh();
+    bool isAdjacent(int nodeToColor, vector<int> coloredNodes);
+
+    // Getters
+    vector<int> getColors() { return colors_; }
+    vector<NodeDegreePair> getDegrees() { return degrees_; }
 
 private:
     Graph g_;
     vector<int> colors_;
-};
-
-class NodeDegreePair {
-public:
-    NodeDegreePair(int node, int degree) {
-        node_ = node;
-        degree_ = degree;
-    }
-
-    int getNode() const {
-        return node_;
-    }
-
-    double getDegree() const {
-        return degree_;
-    }
-
-    bool operator<(const NodePair other) const {
-        return (degree_ < other.getDegree());
-    }
-
-private:
-    int node_;
-    int degree_;
+    vector<NodeDegreePair> degrees_;
 };
