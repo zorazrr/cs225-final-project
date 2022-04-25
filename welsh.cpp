@@ -38,25 +38,26 @@ void Welsh::setUpColors()
 void Welsh::executeWelsh()
 {
     vector<NodeDegreePair> nodesToColor = degrees_;
-    vector<int> nodesToRemove;
     int currColor = 0;
-    int totalNumNodes = nodesToColor.size();
-    while (nodesToRemove.size() < totalNumNodes)
+    while (!nodesToColor.empty())
     {
-        vector<int> nodesToRemove;
-        vector<int> coloredNodes;
+        vector<int> coloredNodes; // vector containing nodes corresponding to this color
         for (size_t i = 0; i < nodesToColor.size(); i++)
         {
             int currNode = nodesToColor[i].getNode();
-            if (colors_[currNode] != 1 && !isAdjacent(currNode, coloredNodes))
+            if (!isAdjacent(currNode, coloredNodes))
             {
                 coloredNodes.push_back(currNode);
                 colors_[currNode] = currColor;
-                nodesToRemove.push_back(i);
             }
         }
-        for (int idx : nodesToRemove) {
-            nodesToColor.erase(nodesToColor.begin() + idx);
+        for (int node : coloredNodes) {
+            for (size_t j = 0; j < nodesToColor.size(); j++) {
+                if (nodesToColor[j].getNode() == node) {
+                    nodesToColor.erase(nodesToColor.begin() + j);
+                    break;
+                }
+            }
         }
         currColor++;
     }
