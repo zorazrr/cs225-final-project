@@ -2,6 +2,7 @@
 
 #include "../graph.h"
 #include "../dijkstra.h"
+#include "../welsh.h"
 
 #include <utility>
 #include <algorithm>
@@ -119,7 +120,7 @@ TEST_CASE("test_create_connections", "[weight=5][graph]")
 
 // Dijkstra Tests
 
-TEST_CASE("test_dijkstra_non_connected", "[weight=5][dijkstra]")
+TEST_CASE("test_dijkstra_non_connected_1", "[weight=5][dijkstra]")
 {
     Graph g;
     g.makeGraph("data/test_disjoint_nodes.txt", "data/test_disjoint_roads.txt");
@@ -152,5 +153,38 @@ TEST_CASE("test_dijkstra_non_connected_3", "[weight=5][dijkstra]")
     for (size_t i = 0; i < expectedPath.size(); i++)
     {
         REQUIRE(dijkstraPath[i] == expectedPath[i]);
+    }
+}
+
+// Welsh-Powell Tests
+TEST_CASE("welsh_powell_small", "[weight=5][welsh]")
+{
+    Graph g;
+    g.makeGraph("data/test_nodes.txt", "data/test_roads.txt");
+    Welsh welsh(g);
+
+    vector<int> welshColors = welsh.getColors();
+    vector<int> expectedColors = {2, 1, 2, 0, 1, 2, 0, 1, 0, 0, 2, 1, 2, 0, 1, 2, 0, 2, 0, 1, 2, 0, 1, 0, 1, 2, 1, 2, 0, 2};
+
+    REQUIRE(welshColors.size() == expectedColors.size());
+    for (size_t i = 0; i < expectedColors.size(); i++)
+    {
+        REQUIRE(welshColors[i] == expectedColors[i]);
+    }
+}
+
+TEST_CASE("welsh_powell_disjoint", "[weight=5][welsh]")
+{
+    Graph g;
+    g.makeGraph("data/test_disjoint_nodes.txt", "data/test_disjoint_roads.txt");
+    Welsh welsh(g);
+
+    vector<int> welshColors = welsh.getColors();
+    vector<int> expectedColors = {1, 1, 2, 0, 0, 2, 1, 0, 1};
+
+    REQUIRE(welshColors.size() == expectedColors.size());
+    for (size_t i = 0; i < expectedColors.size(); i++)
+    {
+        REQUIRE(welshColors[i] == expectedColors[i]);
     }
 }
