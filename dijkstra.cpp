@@ -89,7 +89,7 @@ void Dijkstra::printOnePath(int dest) {
         std::cout << path.at(j) << " ";
     }
     std::cout << "\n";
-    std::cout << "The distance of the shortest path is: " << paths_.at(dest).first << std::endl;
+    std::cout << "The distance of the shortest path is: " << convertDist(paths_.at(dest).first) << "km" << std::endl;
 }
 
 /**
@@ -103,4 +103,12 @@ void Dijkstra::printConnections(vector<vector<Road*>>& connections) {
         }
         std::cout << " " << std::endl;
     }
+}
+/**
+* Convert the distance scale of the dataset to km 
+* @param dist the distance between two nodes (in the scale of the dataset)
+* @return the input distance in km
+**/
+double Dijkstra::convertDist(double dist) {
+    return dist * 100;
 }

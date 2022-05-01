@@ -32,6 +32,8 @@ public:
 
     vector<int> getPath(int dest);
 
+    double convertDist(double dist);
+
 private:
     Graph g_;
     int start_;
