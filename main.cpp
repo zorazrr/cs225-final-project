@@ -16,18 +16,18 @@ int main()
     largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
 
     // Dijkstras Tests
-    // Dijkstra d(smallGraph, 0);
-    // d.printPaths();
+    Dijkstra d(largeGraph, 128);
+    d.printOnePath(411);
     // Dijkstra d(largeGraph, 0);
     // d.printPaths();
 
     // Colorability Tests
-    Welsh welsh(smallGraph);
-    vector<int> colors = welsh.getColors();
-    for (auto color : colors) {
-        std::cout << color << ", ";
-    }
-    std::cout << "\n";
+    // Welsh welsh(smallGraph);
+    // vector<int> colors = welsh.getColors();
+    // for (auto color : colors) {
+    //     std::cout << color << ", ";
+    // }
+    // std::cout << "\n";
 
     return 0;
 }

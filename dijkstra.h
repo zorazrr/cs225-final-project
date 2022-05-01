@@ -28,6 +28,8 @@ public:
 
     void printPaths();
 
+    void printOnePath(int dest);
+
     vector<int> getPath(int dest);
 
 private:
