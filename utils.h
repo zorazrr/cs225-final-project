@@ -7,5 +7,5 @@
 void welcome(Graph& graph);
 void select(Graph& graph);
 void gps(Graph& graph);
-void coloring(Graph& graph);
+void tour(Graph& graph);
 void nearestAttractions(Graph& graph);
