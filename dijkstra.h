@@ -28,7 +28,11 @@ public:
 
     void printPaths();
 
+    void printOnePath(int dest);
+
     vector<int> getPath(int dest);
+
+    double convertDist(double dist);
 
 private:
     Graph g_;
