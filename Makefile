@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o graph.o node.o road.o dijkstra.o welsh.o nodedegreepair.o
+OBJS = main.o graph.o node.o road.o dijkstra.o welsh.o utils.o nodedegreepair.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -32,11 +32,11 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME) : output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cpp graph.cpp node.cpp road.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp
-	$(CXX) $(CXXFLAGS) main.cpp graph.cpp node.cpp road.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp
+main.o : main.cpp graph.cpp node.cpp road.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp
+	$(CXX) $(CXXFLAGS) main.cpp graph.cpp node.cpp road.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp
 
-test: output_msg catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp
-	$(LD) catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp $(LDFLAGS) -o test
+test: output_msg catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp
+	$(LD) catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp $(LDFLAGS) -o test
 
 catchmain.o : cs225/catch/catchmain.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
