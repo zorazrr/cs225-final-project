@@ -61,6 +61,11 @@ void Welsh::executeWelsh()
         }
         currColor++;
     }
+    maxColors_ = currColor;
+}
+
+void Welsh::printMaxColors() {
+    std::cout << "The upper bound on the number of colors needed is " << maxColors_ << "." << std::endl;
 }
 
 bool Welsh::isAdjacent(int nodeToColor, vector<int> coloredNodes)
