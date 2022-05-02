@@ -1,11 +1,20 @@
 #include "dijkstra.h"
 #include "welsh.h"
+<<<<<<< HEAD
 #include "utils.h"
+=======
+#include "calipng.h"
+>>>>>>> main
 #include <iostream>
 
 using namespace std;
 
+<<<<<<< HEAD
 void tests() {
+=======
+int main()
+{
+>>>>>>> main
     // Graph smallGraph;
     // smallGraph.makeGraph("data/test_disjoint_nodes.txt", "data/test_disjoint_roads.txt");
 
@@ -16,8 +25,8 @@ void tests() {
     // largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
 
     // Dijkstras Tests
-    // Dijkstra d(largeGraph, 128);
-    // d.printOnePath(411);
+    Dijkstra d(largeGraph, 128);
+    d.printOnePath(411);
     // Dijkstra d(largeGraph, 0);
     // d.printPaths();
 

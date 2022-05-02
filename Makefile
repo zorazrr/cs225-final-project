@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o graph.o node.o road.o dijkstra.o welsh.o utils.o nodedegreepair.o
+OBJS = main.o graph.o node.o road.o kdtree.o dijkstra.o welsh.o nodedegreepair.o calipng.o PNG.o HSLAPixel.o lodepng.o utils.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -32,17 +32,26 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME) : output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o : main.cpp graph.cpp node.cpp road.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp
-	$(CXX) $(CXXFLAGS) main.cpp graph.cpp node.cpp road.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp
+main.o : main.cpp graph.cpp node.cpp road.cpp kdtree.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp calipng.cpp cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp utils.cpp
+	$(CXX) $(CXXFLAGS) main.cpp graph.cpp node.cpp road.cpp kdtree.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp calipng.cpp cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp utils.cpp
 
-test: output_msg catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp
-	$(LD) catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp utils.cpp $(LDFLAGS) -o test
+test: output_msg catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp kdtree.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp calipng.cpp utils.cpp
+	$(LD) catchmain.o tests.o cs225/PNG.cpp cs225/HSLAPixel.cpp cs225/lodepng/lodepng.cpp road.cpp kdtree.cpp graph.cpp node.cpp dijkstra.cpp welsh.cpp nodedegreepair.cpp calipng.cpp utils.cpp $(LDFLAGS) -o test
 
 catchmain.o : cs225/catch/catchmain.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) cs225/catch/catchmain.cpp
 
 tests.o : tests/tests.cpp cs225/catch/catch.hpp
 	$(CXX) $(CXXFLAGS) tests/tests.cpp
+
+PNG.o : cs225/PNG.cpp cs225/PNG.h cs225/HSLAPixel.h cs225/lodepng/lodepng.h
+	$(CXX) $(CXXFLAGS) cs225/PNG.cpp
+
+HSLAPixel.o : cs225/HSLAPixel.cpp cs225/HSLAPixel.h
+	$(CXX) $(CXXFLAGS) cs225/HSLAPixel.cpp
+
+lodepng.o : cs225/lodepng/lodepng.cpp cs225/lodepng/lodepng.h
+	$(CXX) $(CXXFLAGS) cs225/lodepng/lodepng.cpp
 
 clean :
 	-rm -f *.o $(EXENAME) test
@@ -57,3 +66,4 @@ clean :
 
 # # Use the cs225 makefile template:
 # include cs225/make/cs225.mk
+

@@ -43,3 +43,13 @@ Zora & Grace: After realizing Tarjan’s Strongly Connected Components Algorithm
 
 Next week, we plan to tie up any loose ends and lingering parts. If time permits, we will also work on graphically rendering the results.
 
+## Week 5
+This week, we planned to wrap up the entire project by debugging the Welsh Powell algorithm, modify our program to take in user input and interact with the user, render the map of California and highlight the different paths, and utilize the KD Tree nearest neighbor algorithm to find the nearest point to a user. 
+
+Ellie: There were issues with the KD Tree class getting properly merged into the main Git branch, so I primarily worked on resolving those issues and actually getting the KD Tree files pushed into the main folder. I also debugged the test cases and fixed any issues with the files.
+
+Zora: I worked on graphically rendering our result onto a PNG file. I used the 225 PNG and HSLA pixel to achieve this. The program currently handles rendering the nodes to `california.png` and rendering the shortest path as `californiaShortestPath.png`. I also worked with Grace to fix the outputs of Dijkstra’s and the Welsh-Powell algorithm according to the feedback we received.
+
+Grace: I worked on tying our algorithms back to their real-life applications by setting up user input so that users can interact with our program. I also worked with Zora to fix the outputs of Dijkstra’s and the Welsh-Powell algorithm according to the feedback we received.
+
+Before the deadline: We plan on finishing graph rendering, finalizing the interactive portions, and making the code more readable. We’ll also add documentation, work on our final presentation, and film a video presenting our final project.
