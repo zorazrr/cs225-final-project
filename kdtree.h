@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "util/coloredout.h"
+// #include "util/coloredout.h"
 #include "point.h"
 
 using std::vector;
@@ -54,9 +54,9 @@ class KDTree
 
     Point<Dim> nearestNeighborHelper(const Point<Dim>& query, int dim, const KDTreeNode* curRoot) const;
 
-    void printTree(ostream& out = cout,
-                   colored_out::enable_t enable_bold = colored_out::COUT,
-                   int modWidth = -1) const;
+    // void printTree(ostream& out = cout,
+    //                colored_out::enable_t enable_bold = colored_out::COUT,
+    //                int modWidth = -1) const;
 
   private:
 
@@ -65,12 +65,12 @@ class KDTree
     size_t size;
 
     // Helper function for grading
-    int getPrintData(KDTreeNode * subroot) const;
+    // int getPrintData(KDTreeNode * subroot) const;
 
     // Helper function for grading
-    void printTree(KDTreeNode * subroot, std::vector<std::string>& output,
-                   int left, int top, int width, int currd) const;
+    // void printTree(KDTreeNode * subroot, std::vector<std::string>& output,
+    //                int left, int top, int width, int currd) const;
 };
 
 #include "kdtree.cpp"
-#include "kdtree_extras.cpp"
+// #include "kdtree_extras.cpp"
