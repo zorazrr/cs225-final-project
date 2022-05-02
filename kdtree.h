@@ -72,5 +72,5 @@ class KDTree
     //                int left, int top, int width, int currd) const;
 };
 
-#include "kdtree.cpp"
+// #include "kdtree.cpp"
 // #include "kdtree_extras.cpp"
