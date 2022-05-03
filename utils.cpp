@@ -1,10 +1,13 @@
 #include "utils.h"
 
-void welcome(Graph& graph) {
+void welcome() {
   std::cout << "Hello, traveler! Welcome to the Complete California Experience~" << std::endl;
   std::cout << "Note that routes are based on "
       "data from 2005, so unless you have traveled back in time to secure this amazing piece of technology, the "
       "output may not be completely of use to you. But. Either way, we hope you have an incredible time here!" << std::endl;
+  
+  Graph graph;
+  graph.makeGraph("data/nodes.txt", "data/roads.txt");
   select(graph);
 }
 
@@ -100,15 +103,37 @@ void tour(Graph& graph) {
   std::cout << "(But don't worry if you get lost, since I come with a handy GPS configured just for you :)" << std::endl;
 
   select(graph);
-
-    // vector<int> colors = welsh.getColors();
-    // for (auto color : colors) {
-    //     std::cout << color << ", ";
-    // }
-    // std::cout << "\n";
-    // welsh.printMaxColors();
 }
 
 void nearestAttractions(Graph& graph) {
+  std::cout << "Want to visit an attraction but too lazy to go somewhere far? My Nearest Attractions feature is just for you!" << std::endl;
+  std::cout << "Simply enter in your current coordinates, and I'll find you the closest attraction to where you are!" << std::endl;
+  std::cout << "Enter your current coordinates in the format [latitude] [longitude] (without brackets): ";
+  double latitude;
+  double longitude;
 
+  try {
+    std::cin >> latitude >> longitude;
+    Point<2> loc(latitude, longitude);
+    KDTree<2> tree = getTree(graph);
+    Point<2> nearest = tree.findNearestNeighbor(loc);
+
+    std::cout << "The closest attraction to you is at coordinates " << nearest[0] << " " << nearest[1] << std::endl;
+    std::cout << "I'm not sure exactly what it is, but that doesn't matter! Have fun!" << std::endl;
+    select(graph);
+  } catch (const std::exception& e) {
+    select(graph);
+  }
+}
+
+KDTree<2> getTree(Graph& graph) {
+  vector<Point<2>> points;
+  vector<Node*> nodes = graph.getNodes();
+
+  for (Node* node : nodes) {
+    Point<2> p(node->getLatitude(), node->getLongitude());
+    points.push_back(p);
+  }
+  KDTree<2> tree(points);
+  return tree;
 }

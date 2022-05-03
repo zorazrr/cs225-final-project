@@ -13,8 +13,8 @@ void tests() {
     // Graph mediumGraph;
     // mediumGraph.makeGraph("data/test_nodes.txt", "data/test_roads.txt");
 
-    Graph largeGraph;
-    largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
+    // Graph largeGraph;
+    // largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
 
     // Dijkstras Tests
     // Dijkstra d(largeGraph, 128);
@@ -35,9 +35,7 @@ void tests() {
 int main()
 {
     tests();
-    Graph graph;
-    graph.makeGraph("data/nodes.txt", "data/roads.txt");
-    welcome(graph);
+    welcome();
 
     return 0;
 }
