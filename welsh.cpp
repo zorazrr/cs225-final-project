@@ -23,6 +23,16 @@ void Welsh::setUpDegrees()
     std::sort(degrees_.begin(), degrees_.end());
 }
 
+void Welsh::setUpSet() {
+    set_.addelements(g_.getNumNodes());
+    vector<vector<Road *>> connections = g_.getConnections();
+    for (vector<Road*> roads : connections) {
+        for (Road* road : roads) {
+            
+        }
+    }
+}
+
 /**
  * Fill in default colors
  * -1 represents uncolored nodes

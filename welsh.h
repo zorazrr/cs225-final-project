@@ -2,6 +2,7 @@
 
 #include "graph.h"
 #include "nodedegreepair.cpp"
+#include "dsets.h"
 
 #include <iostream>
 #include <fstream>
@@ -21,6 +22,7 @@ public:
     Welsh(Graph g);
     void setUpColors();
     void setUpDegrees();
+    void setUpSet();
     void executeWelsh();
     bool isAdjacent(int nodeToColor, vector<int> coloredNodes);
     void printMaxColors();
@@ -35,4 +37,5 @@ private:
     vector<int> colors_;
     vector<NodeDegreePair> degrees_;
     int maxColors_;
+    DisjointSets set_;
 };

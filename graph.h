@@ -20,9 +20,9 @@ public:
     // Constructor helpers
     void makeGraph(string nodes_file, string roads_file);
     void createNodes(string nodes_file);
-    vector<Road *> createRoads(string roads_file);
+    void createRoads(string roads_file);
 
-    void createConnections(vector<Road *> roads);
+    void createConnections();
 
     // BFS Traversal given a starting node
     void BFS(int id);
@@ -30,12 +30,14 @@ public:
     void shortestPath();
 
     // Getters
+    vector<Road *> getRoads() { return roads_; }
     vector<Road *> getRoad(int id);
     vector<Node *> getNodes() { return nodes_; }
     vector<vector<Road *>> getConnections() { return connections_; }
     int getNumNodes() { return nodes_.size(); }
 
 private:
+    vector<Road *> roads_;
     vector<Node *> nodes_;
     vector<vector<Road *> > connections_;
     int size_; // number of nodes
