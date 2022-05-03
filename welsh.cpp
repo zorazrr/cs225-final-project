@@ -4,6 +4,7 @@ Welsh::Welsh(Graph g)
 {
     g_ = g;
     setUpDegrees();
+    setUpSet();
     setUpColors();
     executeWelsh();
 }
@@ -25,11 +26,9 @@ void Welsh::setUpDegrees()
 
 void Welsh::setUpSet() {
     set_.addelements(g_.getNumNodes());
-    vector<vector<Road *>> connections = g_.getConnections();
-    for (vector<Road*> roads : connections) {
-        for (Road* road : roads) {
-            
-        }
+    vector<Road*> roads = g_.getRoads();
+    for (Road* road : roads) {
+        set_.setunion(road->getStart(), road->getEnd());
     }
 }
 
@@ -55,7 +54,7 @@ void Welsh::executeWelsh()
         for (size_t i = 0; i < nodesToColor.size(); i++)
         {
             int currNode = nodesToColor[i].getNode();
-            if (!isAdjacent(currNode, coloredNodes))
+            if (coloredNodes.empty() || set_.find(currNode) != set_.find(coloredNodes.at(0)))
             {
                 coloredNodes.push_back(currNode);
                 colors_[currNode] = currColor;
@@ -92,3 +91,6 @@ bool Welsh::isAdjacent(int nodeToColor, vector<int> coloredNodes)
     }
     return false;
 }
+
+// note to self: need to make sure not in the same set as colored nodes
+// not just any node
