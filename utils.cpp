@@ -63,7 +63,7 @@ void gps(Graph& graph) {
 void tour(Graph& graph) {
   std::cout << "Want a good sampling of places in California to visit? You're in luck!" << std::endl;
   std::cout << "This highly-rated (by yours truly), all-encompassing tour will provide you with a thorough selection"
-    "of landmarks in California to visit, excluding places that are too similar to each other." << std::endl;
+    " of landmarks in California to visit, excluding places that are too similar to each other." << std::endl;
   std::cout << "Enter the magic number '1' to view the number of unique tours you can select from :): ";
   
   int input;

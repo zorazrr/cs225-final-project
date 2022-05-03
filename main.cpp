@@ -1,6 +1,7 @@
 #include "dijkstra.h"
 #include "welsh.h"
 #include "utils.h"
+#include "calipng.h"
 #include <iostream>
 
 using namespace std;
@@ -12,12 +13,12 @@ void tests() {
     // Graph mediumGraph;
     // mediumGraph.makeGraph("data/test_nodes.txt", "data/test_roads.txt");
 
-    // Graph largeGraph;
-    // largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
+    Graph largeGraph;
+    largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
 
     // Dijkstras Tests
-    // Dijkstra d(largeGraph, 128);
-    // d.printOnePath(411);
+    Dijkstra d(largeGraph, 128);
+    d.printOnePath(411);
     // Dijkstra d(largeGraph, 0);
     // d.printPaths();
 
@@ -29,10 +30,15 @@ void tests() {
     // }
     // std::cout << "\n";
     // welsh.printMaxColors();
+
+    // Rendering California
+    PNG cali = createCali(largeGraph);
+    drawShortestPath(cali, largeGraph, d, 1024);
 }
 
 int main()
 {
+    tests();
     Graph graph;
     graph.makeGraph("data/nodes.txt", "data/roads.txt");
     welcome(graph);
