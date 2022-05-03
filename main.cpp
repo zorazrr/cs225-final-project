@@ -17,8 +17,8 @@ void tests() {
     largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");
 
     // Dijkstras Tests
-    Dijkstra d(largeGraph, 128);
-    d.printOnePath(411);
+    // Dijkstra d(largeGraph, 128);
+    // d.printOnePath(411);
     // Dijkstra d(largeGraph, 0);
     // d.printPaths();
 
@@ -30,10 +30,6 @@ void tests() {
     // }
     // std::cout << "\n";
     // welsh.printMaxColors();
-
-    // Rendering California
-    PNG cali = createCali(largeGraph);
-    drawShortestPath(cali, largeGraph, d, 1024);
 }
 
 int main()
