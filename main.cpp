@@ -2,6 +2,7 @@
 #include "welsh.h"
 #include "utils.h"
 #include "calipng.h"
+#include "kdtree.h"
 #include <iostream>
 
 using namespace std;

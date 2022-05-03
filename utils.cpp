@@ -1,5 +1,9 @@
 #include "utils.h"
 
+/**
+ * Welcomes users to the program, generates the graph, calls the selection 
+ * method
+ **/
 void welcome() {
   std::cout << "Hello, traveler! Welcome to the Complete California Experience~" << std::endl;
   std::cout << "Note that routes are based on "
@@ -11,6 +15,11 @@ void welcome() {
   select(graph);
 }
 
+/**
+ * The main selection screen; gives users the ability to select which
+ * algorithm to call
+ * @param graph graph representation of the dataset
+ **/
 void select(Graph& graph) {
   std::cout << "-----------------------" << std::endl;
   std::cout << "The Complete California Experience offers three components: 1) GPS, 2) Tour, and 3) Nearest Attractions." << std::endl;
@@ -38,6 +47,12 @@ void select(Graph& graph) {
   }
 }
 
+/**
+ * Asks the user for two coordinates: starting point & destination point. 
+ * Uses k-nearest neighbors to find the closest nodes to each coordinate, then
+ * executes Dijkstra's to output the shortest path between the two nodes
+ * @param graph graph representation of the dataset
+ **/
 void gps(Graph& graph) {
   std::cout << "Welcome to the most accurate, most trustworthy, and least outdated GPS you'll ever use!" << std::endl;
   std::cout << "Enter the node you're starting at: ";
@@ -63,6 +78,12 @@ void gps(Graph& graph) {
   select(graph);
 }
 
+/**
+ * Executes the Welsh-Powell algorithm. Asks the user to select a color 
+ * (representing a unique sampling of places in California to visit), then
+ * outputs all of the nodes corresponding to that color.
+ * @param graph graph representation of the dataset
+ **/
 void tour(Graph& graph) {
   std::cout << "Want a good sampling of places in California to visit? You're in luck!" << std::endl;
   std::cout << "This highly-rated (by yours truly), all-encompassing tour will provide you with a thorough selection"
@@ -105,6 +126,12 @@ void tour(Graph& graph) {
   select(graph);
 }
 
+/**
+ * Aks users for their current coordinates, then outputs the coordinates of the 
+ * closest attraction (node) to those coordinates by using the k-nearest 
+ * neighbors algorithm.
+ * @param graph graph representation of the dataset
+ **/
 void nearestAttractions(Graph& graph) {
   std::cout << "Want to visit an attraction but too lazy to go somewhere far? My Nearest Attractions feature is just for you!" << std::endl;
   std::cout << "Simply enter in your current coordinates, and I'll find you the closest attraction to where you are!" << std::endl;
@@ -126,6 +153,11 @@ void nearestAttractions(Graph& graph) {
   }
 }
 
+/**
+ * Constructs and returns the k-d tree corresponding to the dataset
+ * @param graph graph representation of the dataset
+ * @return the k-dtree corresponding to the dataset
+ **/
 KDTree<2> getTree(Graph& graph) {
   vector<Point<2>> points;
   vector<Node*> nodes = graph.getNodes();
