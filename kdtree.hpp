@@ -4,6 +4,14 @@
 
 using namespace std;
 
+/**
+* Helper function that returns true if the first point is smaller in the
+* current dimension
+* @param first the first point
+* @param second the second point
+* @param currDim the current dimension
+* @return true if first is smaller than second in currDim
+**/
 template <int Dim>
 bool KDTree<Dim>::smallerDimVal(const Point<Dim>& first,
                                 const Point<Dim>& second, int curDim) const
@@ -44,6 +52,10 @@ double KDTree<Dim>::squaredDist(const Point<Dim>& point1, const Point<Dim>& poin
     return distance;
 }
 
+/**
+* Constructs a kd-tree given a vector of points
+* @param newPoints the vector of points to build the kd-tree from
+**/
 template <int Dim>
 KDTree<Dim>::KDTree(const vector<Point<Dim>>& newPoints)  
 {
@@ -56,6 +68,14 @@ KDTree<Dim>::KDTree(const vector<Point<Dim>>& newPoints)
     buildTree(points, 0, 0, size-1, root);
 }
 
+/**
+* Builds the kd-tree recursively using quickselect, each point having dimension dim
+* @param newPoints the points to insert into the kd-tree
+* @param dim the dimension we're currently considering
+* @param left left bound
+* @param right right bound
+* @param currRoot the currRoot of our subtree
+**/
 template <int Dim>
 void KDTree<Dim>::buildTree(vector<Point<Dim>>& newPoints, int dim, int left, int right, KDTreeNode*& curRoot) {
     if((int)(newPoints.size()) == 0) {
@@ -73,6 +93,15 @@ void KDTree<Dim>::buildTree(vector<Point<Dim>>& newPoints, int dim, int left, in
     }
 }
 
+/**
+* Helper function that partitions the kd-tree around the pivotIndex so that elements to the 
+* left are smaller than the element at the pivotIndex and elements to the right are larger
+* @param list the list to partition
+* @param dim the current dimension
+* @param left the left bound of points to consider
+* @param right the right bound of points to consider
+* @param pivotIndex the pivot index
+**/
 template <int Dim>
 int KDTree<Dim>::partition(vector<Point<Dim>>& list, int dim, int left, int right, int pivotIndex) {
     Point<Dim> pivotValue = list.at(pivotIndex);
@@ -88,6 +117,14 @@ int KDTree<Dim>::partition(vector<Point<Dim>>& list, int dim, int left, int righ
     return storeIndex;
 }
 
+/**
+* Helper function to return the kth smallest element of the list within [left, right]
+* @param list the list to quick select from
+* @param dim the current dimension
+* @param left the left bound of points to consider
+* @param right the right bound of points to consider
+* @param k the value k, where the goal is to find the kth smallest element
+**/
 template <int Dim>
 Point<Dim>& KDTree<Dim>::quickselect(vector<Point<Dim>>& list, int dim, int left, int right, int k) {
     while(true) {
@@ -146,6 +183,11 @@ void KDTree<Dim>::destroy(KDTreeNode*& node) {
     delete node;
 }
 
+/**
+* Given a point, returns the nearest neighbor to that point 
+* @param query the point whose nearest neighbor we are to find
+* @return nearestNeighbor the nearest neighbor to query in our tree
+**/
 template <int Dim>
 Point<Dim> KDTree<Dim>::findNearestNeighbor(const Point<Dim>& query) const
 {
@@ -155,6 +197,13 @@ Point<Dim> KDTree<Dim>::findNearestNeighbor(const Point<Dim>& query) const
     return Point<Dim>();
 }
 
+/**
+* Helper function that recursively finds and returns the nearest neighbor 
+* @param query the point whose nearest neighbor we are to find
+* @param dim the current dimension to consider
+* @param currRoot the current root of the subtree we're looking at
+* @return nearest the nearest neighbor to query
+**/
 template <int Dim>
 Point<Dim> KDTree<Dim>::nearestNeighborHelper(const Point<Dim>& query, int dim, const KDTreeNode* curRoot) const {
     if(curRoot->left == NULL && curRoot->right == NULL) {
