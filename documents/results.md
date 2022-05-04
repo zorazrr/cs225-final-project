@@ -13,8 +13,14 @@ Our Welsh-Powell algorithm takes in a graph and outputs the upper bound on the c
 To ensure that our algorithm is correct, we created tests using smaller datasets whose results we could manually confirm. Aside from testing general behavior, one of our tests also ensured that the algorithm works with disjointed data.
 
 ### K-Nearest Neighbors
+Our K-D Tree K-Nearest Neighbors algorithm takes in the user’s current coordinates (latitude longitude format) and outputs the latitude and longitude coordinates of the nearest attraction, or node, to the user. We were able to do this by representing our points in a two-dimensional tree. This algorithm allowed us to implement the find nearest attraction functionality of our program, and we were even able to find the closest California attraction to some of our group members’ houses. The K-Nearest Neighbors algorithm runs at a time complexity of O(logn). 
+
+We verified the results of this algorithm by writing various test cases for not only the K-Nearest Neighbors algorithm (in both 2D and 3D) but also smaller functions of K-D Trees, such as shouldReplace and smallerDimVal
 
 ### Breadth-First Search
+Our breadth-first search algorithm takes in a starting node and outputs a sequence of nodes that can be accessed from that starting node in the order in which they would be accessed through a breadth-first search traversal. Because the graph representation of our dataset is made up of numerous small connected components, the output of the algorithm often only prints a small subset of the dataset.
+
+We confirmed that the traversal is working as intended by adding test cases using smaller datasets whose results we can manually confirm. 
 
 ## Leading Question
 By implementing the aforementioned algorithms, we were able to accomplish our leading goal of “creat[ing] a tool that helps travelers navigate through the dataset.” 
