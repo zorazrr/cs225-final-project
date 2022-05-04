@@ -46,18 +46,19 @@ void Welsh::setUpColors()
  **/
 void Welsh::executeWelsh()
 {
-    vector<NodeDegreePair> nodesToColor = degrees_;
     int currColor = 0;
-    for (size_t i = 0; i < nodesToColor.size(); i++) {
-        int currNode = nodesToColor[i].getNode();
+    for (size_t i = 0; i < degrees_.size(); i++) {
+        int currNode = degrees_[i].getNode();
         if (colors_[currNode] != -1) continue;
 
-        vector<int> coloredNodes;
+        vector<int> coloredNodes; // vector of nodes corresponding to the current color
         coloredNodes.push_back(currNode);
         colors_[currNode] = currColor;
 
-        for (size_t j = i + 1; j < nodesToColor.size(); j++) {
-            int newNode = nodesToColor[j].getNode();
+        // if a node hasn't been colored & isn't adjacent to any of the 
+        // nodes corresponding to the current color, assign it to the same color
+        for (size_t j = i + 1; j < degrees_.size(); j++) {
+            int newNode = degrees_[j].getNode();
             if (colors_[newNode] == -1 && !isAdjacent(newNode, coloredNodes)) {
                 coloredNodes.push_back(newNode);
                 colors_[newNode] = currColor;
