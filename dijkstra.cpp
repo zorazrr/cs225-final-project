@@ -13,12 +13,12 @@ void Dijkstra::executeDijkstra() {
     // first: length of shortest path to start, second: predecessor
     paths_.at(start_).first = 0; // start is distance 0 from itself
 
-    priority_queue<NodePair> toVisit;
-    toVisit.push(NodePair(start_, 0));
+    priority_queue<NodeDistPair> toVisit;
+    toVisit.push(NodeDistPair(start_, 0));
 
     while (!toVisit.empty()) {
         // visit the node with highest priority (shortest distance) in toVisit 
-        NodePair pair = toVisit.top();
+        NodeDistPair pair = toVisit.top();
         toVisit.pop();
         int node = pair.getNode();
         double distance = pair.getLength();
@@ -30,7 +30,7 @@ void Dijkstra::executeDijkstra() {
 
             // if we haven't visited this node yet, push to queue
             if (paths_.at(adjacentNode).second == -1) {
-                toVisit.push(NodePair(adjacentNode, distance + road->getLength()));
+                toVisit.push(NodeDistPair(adjacentNode, distance + road->getLength()));
             }
 
             // if the node's current path is shorter than its previous, update
