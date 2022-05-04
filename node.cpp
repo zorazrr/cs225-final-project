@@ -41,6 +41,10 @@ double Node::toRadians(const double degree) {
     return (M_PI / 180) * degree;
 }
 
+/**
+* Calculates the distance between two nodes
+* @param other the other node
+**/
 double Node::calcDistance(Node& other) {
     double lat1 = toRadians(latitude_);
     double long1 = toRadians(longitude_);

@@ -1,9 +1,13 @@
 #include "graph.h"
 
-Graph::Graph() {
-   
-}
+Graph::Graph() {}
 
+/**
+* Calls the functions for populating nodes_, roads_, connected_, and
+* connections_, and initializes the size
+* @param nodes_file the file containing information about the nodes
+* @param roads_file the file containing information about the roads
+**/
 void Graph::makeGraph(string nodes_file, string roads_file) {
     createNodes(nodes_file);
     createRoads(roads_file);
@@ -11,6 +15,13 @@ void Graph::makeGraph(string nodes_file, string roads_file) {
     size_ = (int)(nodes_.size());
 }
 
+/**
+* Reads from nodes_file to populate nodes_, a vector containing
+* all of the Road objects corresponding to the dataset. Also
+* populates connections_ with default values to avoid segmentation
+* faults in createConnections()
+* @param nodes_file the file containing information about the nodes
+**/
 void Graph::createNodes(string nodes_file) {
     ifstream ifs(nodes_file);
 
@@ -29,6 +40,15 @@ void Graph::createNodes(string nodes_file) {
     }
 }
 
+/**
+* Reads from roads_file to populate roads_, a vector containing
+* all of the Road objects corresponding to the dataset. Also populates
+* connected_, a set used in the Welsh-Powell algorithm to determine
+* if a connection between two nodes exists. The cantor pairing function
+* is used to ensure that mapping the connection between two nodes to a 
+* single integer is unique and deterministic
+* @param roads_file the file containing information about the roads
+**/
 void Graph::createRoads(string roads_file) {
     ifstream ifs(roads_file);
 
@@ -51,6 +71,11 @@ void Graph::createRoads(string roads_file) {
     }
 }
 
+/**
+* Populates connections_, the adjacency list representation of our graph, 
+* once roads_ has been created. Each index of connections_ corresponds to a node,
+* and the vector at that index contains the roads connected to that node.
+**/
 void Graph::createConnections() {
     for (unsigned i = 0; i < roads_.size(); ++i) {
         Road* road = roads_.at(i);
@@ -62,6 +87,10 @@ void Graph::createConnections() {
     }
 }
 
+/**
+* Executes bfs on the graph and prints the traversal
+* @param id the id of the starting node
+**/
 void Graph::BFS(int id) {
     bool *visited = new bool[size_];
     for(int i = 0; i < size_; i++) {
