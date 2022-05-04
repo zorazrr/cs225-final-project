@@ -1,10 +1,10 @@
 # CS225 Final Project: The Complete California Experience
 
 <p align="center">
-  <a href="#Data">Data</a> •
-  <a href="#Repo Structure">Repo Structure</a> •
-  <a href="#Running Instructions">Running Instructions</a> •
-  <a href="#Team">Team</a>
+  <a href="#data">Data</a> •
+  <a href="#repo-structure">Repo Structure</a> •
+  <a href="#running-instructions">Running Instructions</a> •
+  <a href="#team">Team</a>
 </p>
 
 <p align="center">
@@ -20,19 +20,22 @@ We are using the [California Road Network and Points of Interest](https://www.cs
 
 ## Repo Structure
 
-<p align="center">
-  <img src="./data/graphs/repoStructure.png" />
-</p>
+### Deliverables
 
-- All major classes and functions are in the [root directory](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main). The structure of those files is outlined in the diagram above.
+- All major files that contain our functions and classes are in the [root directory](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main). The structure of those files is outlined in [Project Structure](#project-structure).
 
 - Datasets are stored as txt files in [`/data`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/data).
 
 - Tests are in [`/tests`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/data).
 
-- Project contract, proposal, report, and development log are in [`/documents`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/documents).  
+- Project report, development log, contract, etc. are in [`/documents`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/documents). 
 
-- Presentation video can be found [**INSERT LINK**](https://courses.engr.illinois.edu/cs225/sp2022/).
+- Presentation video can be found [here](https://youtu.be/k5q8TCWUaSI).
+
+### Project Structure
+<p align="center">
+  <img src="./data/graphs/repoStructure.png" width="500"/>
+</p>
 
 ## Running Instructions
 
@@ -44,16 +47,19 @@ To use our Complete California Experience program, run `make` then `./main` in t
 
 We call all the functions in `main.cpp` for you (through a fleshed-out `utils.cpp` that will print clear instructions on what your user input should be). The required inputs for each of the functionality are as follows:
 
-1. GPS:
+1. GPS (Dijkstra's): 
    - Input: starting node number and ending node number (both should be integer between 0 and 21047)
    - Output: the shortest path (nodes it passes through) and the distance of the shortest path (in km)
-   - PNG Output: `californiaShortestPath.png` that outlines the shortest path on the California map constructed from our nodes
-2. Tour:
+   - Image Output: `californiaShortestPath.png` that outlines the shortest path on the California map constructed from our nodes
+2. Sporadic Tour (Welsh-Powell Colorability):
    - Input: an integer within the given bounds (currently it's 1-3)
    - Output: the node numbers, based on our colorability algorithm, that correspond to your given input and represent places you should visit
-3. Nearest Attraction:
+3. Nearest Attraction (KD Tree Nearest Neighbors):
    - Input: longitude (-124.389343 ~ -114.294258) and latitude (32.541302 ~ 42.017231)
    - Output: a latitude - longitude pair that indicates a California attraction that is closest to your current location
+4. Lazy/Cluster Travel (BFS): 
+   - Input: starting node number (integer between 0 and 21047)
+   - Output: a traversal path within your current cluster
 
 In addition to the above overarching functions that are called in `main.cpp`, we also have clear input and output definitions in the comments for each small functions, so you can always refer to those.
 
