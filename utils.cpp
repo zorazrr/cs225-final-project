@@ -55,12 +55,13 @@ void select(Graph& graph) {
  * @param graph graph representation of the dataset
  **/
 void gps(Graph& graph) {
+  std::cout << "-----------------------" << std::endl;
   std::cout << "Welcome to the most accurate, most trustworthy, and least outdated GPS you'll ever use!" << std::endl;
   std::cout << "(Node number ranges from 0 to 21047)" << std::endl;
   std::cout << "Enter the node you're starting at: ";
+
   int start;
   std::cin >> start;
-
   if (start == -1) {
       select(graph);
       return;
@@ -69,11 +70,11 @@ void gps(Graph& graph) {
   std::cout << "Enter the node you'd like to end at: ";
   int end;
   std::cin >> end;
-
   if (end == -1) {
       select(graph);
       return;
   }
+
   Dijkstra d(graph, start);
   d.printOnePath(end);
   drawShortestPath(graph, d, end);
@@ -89,6 +90,7 @@ void gps(Graph& graph) {
  * @param graph graph representation of the dataset
  **/
 void tour(Graph& graph) {
+  std::cout << "-----------------------" << std::endl;
   std::cout << "Want a good sampling of places in California to visit? You're in luck!" << std::endl;
   std::cout << "This highly-rated (by yours truly), all-encompassing tour will provide you with a thorough selection"
     " of landmarks in California to visit, excluding places that are too similar to each other." << std::endl;
@@ -96,22 +98,18 @@ void tour(Graph& graph) {
   
   int input;
   std::cin >> input;
-
   if (input != 1) {
     select(graph);
     return;
   }
 
   std::cout << "Loading... this can take up to 5 minutes. Maybe check out the scenery around you?" << std::endl;
-
   Welsh welsh(graph);
   welsh.printMaxColors();
 
   std::cout << "Enter a number from 1 to " << welsh.getMaxColors() << " corresponding to the tour you'd like to view. ";
-
   int color;
   std::cin >> color;
-
   if (color < 1 || color > welsh.getMaxColors()) {
     select(graph);
     return;
@@ -137,6 +135,7 @@ void tour(Graph& graph) {
  * @param graph graph representation of the dataset
  **/
 void nearestAttractions(Graph& graph) {
+  std::cout << "-----------------------" << std::endl;
   std::cout << "Want to visit an attraction but too lazy to go somewhere far? My Nearest Attractions feature is just for you!" << std::endl;
   std::cout << "Simply enter in your current coordinates, and I'll find you the closest attraction to where you are!" << std::endl;
   std::cout << "Enter your current coordinates in the format [latitude] [longitude] (without brackets): ";
@@ -145,8 +144,8 @@ void nearestAttractions(Graph& graph) {
 
   try {
     std::cin >> latitude >> longitude;
-    // X (longitude) ranges from -114.294 to -124.389 (10.095)
-    // Y (latitude) ranges from 32.5413 to 42.0172 (9.4759)
+    // Longitude ranges from -114.294 to -124.389 (10.095)
+    // Latitude ranges from 32.5413 to 42.0172 (9.4759)
     if (longitude < -124.389343 || longitude > -114.294258 || latitude < 32.541302 || latitude > 42.017231) {
       std::cout << "Oh no hold up! You are going out of California!" << std::endl;
       std::cout << "The latitude of California goes from 32.541302 to 42.017231." << std::endl;
