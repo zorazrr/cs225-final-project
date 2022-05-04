@@ -20,6 +20,7 @@ We are using the [California Road Network and Points of Interest](https://www.cs
 
 ## Repo Structure
 
+### [Presentation Video](https://youtu.be/k5q8TCWUaSI)
 ### Deliverables
 
 - All major files that contain our functions and classes are in the [root directory](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main). The structure of those files is outlined in [Project Structure](#project-structure).
@@ -30,11 +31,9 @@ We are using the [California Road Network and Points of Interest](https://www.cs
 
 - Project report, development log, contract, etc. are in [`/documents`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/documents). 
 
-- Presentation video can be found [here](https://youtu.be/k5q8TCWUaSI).
-
 ### Project Structure
 <p align="center">
-  <img src="./data/graphs/repoStructure.png" width="500"/>
+  <img src="./data/graphs/repoStructure.png" width="560"/>
 </p>
 
 ## Running Instructions
