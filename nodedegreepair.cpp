@@ -13,6 +13,10 @@
 
 using namespace std;
 
+/**
+* A class that stores a node and its degree. Used in the Welsh-
+* Powell algorithm to sort the nodes in decreasing order by degree
+**/
 class NodeDegreePair
 {
 public:

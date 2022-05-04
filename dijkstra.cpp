@@ -1,5 +1,11 @@
 #include "dijkstra.h"
 
+/**
+* Given a starting Graph g and start node, sets up the paths_
+* variable and calls Dijkstra's
+* @param g the graph dijkstra's is implemented on
+* @param start the starting node
+**/
 Dijkstra::Dijkstra(Graph g, int start): g_(g), start_(start) {
     // populate empty paths_
     setUpPaths(g_.getConnections().size());
@@ -7,6 +13,10 @@ Dijkstra::Dijkstra(Graph g, int start): g_(g), start_(start) {
     executeDijkstra();
 }
 
+/**
+* Executes Dijkstra's to populate paths_, a vector of vector of Roads
+* containing the shortest path from the start node to every other node
+**/
 void Dijkstra::executeDijkstra() {
     vector<vector<Road*>> connections = g_.getConnections();
     
@@ -44,15 +54,21 @@ void Dijkstra::executeDijkstra() {
 
 
 /**
+* Populates paths_ with default values
 * @param paths_ first: length of shortest path to start, second: predecessor
 * @param size number of nodes
-*/
+**/
 void Dijkstra::setUpPaths(unsigned size) {
     for (unsigned i = 0; i < size; ++i) {
         paths_.push_back(make_pair<double, int>(std::numeric_limits<double>::max(), -1));
     }
 }
 
+/**
+* Works backward from paths_ to retrieve the path taken from start to destination
+* @param dest the destination node
+* @return path the path taken from start to dest
+**/
 vector<int> Dijkstra::getPath(int dest) {
     vector<int> path;
     int curr = dest;
@@ -65,6 +81,10 @@ vector<int> Dijkstra::getPath(int dest) {
     return path;
 }
 
+/**
+* Once paths_ has been populated, the function prints the shortest path from
+* the starting node to every other node
+**/
 void Dijkstra::printPaths() {
     for (unsigned i = 0; i < paths_.size(); ++i) {
         // returns the path from start to node i
@@ -93,6 +113,7 @@ void Dijkstra::printOnePath(int dest) {
 }
 
 /**
+* Helper function that prints out the start and ending nodes of every road coming out of each node
 * @param connections vector of vectors, where each vector contains the roads connected to the corresponding node
 */
 void Dijkstra::printConnections(vector<vector<Road*>>& connections) {
