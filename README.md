@@ -1,6 +1,7 @@
 # CS225 Final Project: The Complete California Experience
 
 <p align="center">
+  <a href="#presentation-video">Presentation Video</a> •
   <a href="#data">Data</a> •
   <a href="#repo-structure">Repo Structure</a> •
   <a href="#running-instructions">Running Instructions</a> •
@@ -11,6 +12,8 @@
   <img src="./data/graphs/cal.jpg" />
 </p>
 
+## [Presentation Video](https://youtu.be/k5q8TCWUaSI)
+
 ## Data
 
 We are using the [California Road Network and Points of Interest](https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm) data and focusing on the following two files:
@@ -20,7 +23,6 @@ We are using the [California Road Network and Points of Interest](https://www.cs
 
 ## Repo Structure
 
-### [Presentation Video](https://youtu.be/k5q8TCWUaSI)
 ### Deliverables
 
 - All major files that contain our functions and classes are in the [root directory](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main). The structure of those files is outlined in [Project Structure](#project-structure).
