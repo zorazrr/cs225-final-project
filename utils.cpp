@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "calipng.h"
 
 /**
  * Welcomes users to the program, generates the graph, calls the selection 
@@ -55,6 +56,7 @@ void select(Graph& graph) {
  **/
 void gps(Graph& graph) {
   std::cout << "Welcome to the most accurate, most trustworthy, and least outdated GPS you'll ever use!" << std::endl;
+  std::cout << "(Node number ranges from 0 to 21047)" << std::endl;
   std::cout << "Enter the node you're starting at: ";
   int start;
   std::cin >> start;
@@ -74,7 +76,9 @@ void gps(Graph& graph) {
   }
   Dijkstra d(graph, start);
   d.printOnePath(end);
+  drawShortestPath(graph, d, end);
   std::cout << "Have a fun time getting there :)" << std::endl;
+  std::cout << "We printed out a path outline for you, check your folder for californiaShortestPath.png!" << std::endl;
   select(graph);
 }
 
