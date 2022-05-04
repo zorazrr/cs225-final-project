@@ -1,7 +1,9 @@
 # CS 225 Final Report
 ### Algorithm Overview
 ##### Dijkstra’s
-Our implementation of Dijkstra’s algorithm takes in two node IDs (of the destination and starting point) and outputs the shortest path, using roads, between them. The results of this algorithm are also graphically rendered on a map of California. Dijkstra’s algorithm was the main component 
+Our implementation of Dijkstra’s algorithm takes in two node IDs (of the destination and starting point) and outputs the shortest path, using roads, between them. The results of this algorithm are also graphically rendered on a map of California. Dijkstra’s algorithm was the main component behind the GPS functionality of our program, and it allowed us to identify the quickest way to get from one point in California to another. Our implementation uses a min heap priority queue and thus has a time complexity of O(V + Elog(V)), where V represents the number of vertices and E represents the number of edges.
+
+To test Dijkstra’s algorithm, we wrote multiple test cases for smaller subsets of our dataset and required that the results of running the algorithm on the graph was the same as the expected result, which we calculated by hand. We also ensured that the algorithm could run on non-connected graphs.
 
 ![dijkstra](https://media.github-dev.cs.illinois.edu/user/14051/files/f6276fcc-c407-4fe4-8dbf-a1cd51bc5f6c)
 
