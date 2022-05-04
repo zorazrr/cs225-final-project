@@ -20,7 +20,19 @@ We are using the [California Road Network and Points of Interest](https://www.cs
 
 ## Repo Structure
 
-This is a biggie. Work in Progress.
+<p align="center">
+  <img src="./data/graphs/repoStructure.png" />
+</p>
+
+- All major classes and functions are in the [root directory](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main). The structure of those files is outlined in the diagram above.
+
+- Datasets are stored as txt files in [`/data`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/data).
+
+- Tests are in [`/tests`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/data).
+
+- Project contract, proposal, report, and development log are in [`/documents`](https://github-dev.cs.illinois.edu/cs225-sp22/ruoranz2-gracewz2-elliepc2/tree/main/documents).  
+
+- Presentation video can be found [**INSERT LINK**](https://courses.engr.illinois.edu/cs225/sp2022/).
 
 ## Running Instructions
 
@@ -40,7 +52,7 @@ We call all the functions in `main.cpp` for you (through a fleshed-out `utils.cp
    - Input: an integer within the given bounds (currently it's 1-3)
    - Output: the node numbers, based on our colorability algorithm, that correspond to your given input and represent places you should visit
 3. Nearest Attraction:
-   - Input: longitude (-124.389343 ~ -114.294258) and latitude (32.541302 ~ 42.017231) of the place you are at
+   - Input: longitude (-124.389343 ~ -114.294258) and latitude (32.541302 ~ 42.017231)
    - Output: a latitude - longitude pair that indicates a California attraction that is closest to your current location
 
 In addition to the above overarching functions that are called in `main.cpp`, we also have clear input and output definitions in the comments for each small functions, so you can always refer to those.
