@@ -141,13 +141,23 @@ void nearestAttractions(Graph& graph) {
 
   try {
     std::cin >> latitude >> longitude;
-    Point<2> loc(latitude, longitude);
-    KDTree<2> tree = getTree(graph);
-    Point<2> nearest = tree.findNearestNeighbor(loc);
+    // X (latitude) ranges from -114.294 to -124.389 (10.095)
+    // Y (longitude) ranges from 32.5413 to 42.0172 (9.4759)
+    if (latitude < -124.389343 || latitude > -114.294258 || longitude < 32.541302 || longitude > 42.017231) {
+      std::cout << "Oh no hold up! You are going out of California!" << std::endl;
+      std::cout << "The latitude of California goes from -124.389343 to -114.294258." << std::endl;
+      std::cout << "The longitude of California goes from 32.541302 to 42.017231." << std::endl;
+      std::cout << "Let's try it again:" << std::endl;
+      nearestAttractions(graph);
+    } else {
+      Point<2> loc(latitude, longitude);
+      KDTree<2> tree = getTree(graph);
+      Point<2> nearest = tree.findNearestNeighbor(loc);
 
-    std::cout << "The closest attraction to you is at coordinates " << nearest[0] << " " << nearest[1] << std::endl;
-    std::cout << "I'm not sure exactly what it is, but that doesn't matter! Have fun!" << std::endl;
-    select(graph);
+      std::cout << "The closest attraction to you is at coordinates " << nearest[0] << " " << nearest[1] << std::endl;
+      std::cout << "I'm not sure exactly what it is, but that doesn't matter! Have fun!" << std::endl;
+      select(graph);
+    }
   } catch (const std::exception& e) {
     select(graph);
   }
