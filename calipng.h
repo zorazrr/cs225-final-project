@@ -11,4 +11,4 @@ using namespace cs225;
 PNG createCali(Graph g);
 std::pair<int, int> castPosition(double x, double y);
 
-void drawShortestPath(PNG &cali, Graph g, Dijkstra dijk, int dest);
+void drawShortestPath(Graph g, Dijkstra dijk, int dest);

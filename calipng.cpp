@@ -15,7 +15,7 @@ PNG createCali(Graph g)
     vector<Node *> nodes = g.getNodes();
     for (Node *n : nodes)
     {
-        auto posPair = castPosition(n->getLatitude(), n->getLongitude());
+        auto posPair = castPosition(n->getLongitude(), n->getLatitude());
         HSLAPixel &p = cali.getPixel(posPair.first, posPair.second);
         p.h = 0;
         p.l = 0;
@@ -27,28 +27,28 @@ PNG createCali(Graph g)
 
 /**
  * Draws the shortest path on the image
- * @param cali the png image that we are modifying
  * @param g the adjacency list that contains nodes in california map
  * @param dijk dijk should contain the shortest paths from a starting point to all other nodes
  * @param dest the destination node number
  **/
-void drawShortestPath(PNG &cali, Graph g, Dijkstra dijk, int dest)
+void drawShortestPath(Graph g, Dijkstra dijk, int dest)
 {
+    PNG cali = createCali(g);
     vector<Node *> nodes = g.getNodes();
     vector<int> path = dijk.getPath(dest);
     for (int nodeIdx : path)
     {
-        double posX = nodes[nodeIdx]->getLatitude();
-        double posY = nodes[nodeIdx]->getLongitude();
+        double posY = nodes[nodeIdx]->getLatitude();
+        double posX = nodes[nodeIdx]->getLongitude();
         auto posPair = castPosition(posX, posY);
-        for (int i = posPair.first - 5; i < posPair.first + 5; i++)
+        for (int i = posPair.first - 3; i < posPair.first + 5; i++)
         {
-            for (int j = posPair.second - 5; j < posPair.second; j++)
+            for (int j = posPair.second - 3; j < posPair.second; j++)
             {
                 HSLAPixel &p = cali.getPixel(i, j);
                 p.h = 0;
                 p.s = 100;
-                p.l = 50;
+                p.l = 30;
                 p.a = 1;
             }
         }
