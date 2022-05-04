@@ -73,7 +73,8 @@ TEST_CASE("test_create_roads", "[weight=5][graph]")
     vector<Road *> expectedRoads = getSmallRoads();
 
     Graph g;
-    vector<Road *> roads = g.createRoads("./data/small_test_roads.txt");
+    g.createRoads("./data/small_test_roads.txt");
+    vector<Road*> roads = g.getRoads();
 
     REQUIRE(expectedRoads.size() == roads.size());
 

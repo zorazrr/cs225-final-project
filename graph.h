@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <set>
 
 using namespace std;
 
@@ -34,11 +35,13 @@ public:
     vector<Road *> getRoad(int id);
     vector<Node *> getNodes() { return nodes_; }
     vector<vector<Road *>> getConnections() { return connections_; }
+    set<int> getConnected() { return connected_; }
     int getNumNodes() { return nodes_.size(); }
 
 private:
     vector<Road *> roads_;
     vector<Node *> nodes_;
     vector<vector<Road *> > connections_;
+    set<int> connected_;
     int size_; // number of nodes
 };

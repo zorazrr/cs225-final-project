@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <functional>
 #include <string>
+#include <set>
 #include <vector>
 #include <queue>
 #include <limits>
@@ -22,7 +23,6 @@ public:
     Welsh(Graph g);
     void setUpColors();
     void setUpDegrees();
-    void setUpSet();
     void executeWelsh();
     bool isAdjacent(int nodeToColor, vector<int> coloredNodes);
     void printMaxColors();
@@ -37,5 +37,4 @@ private:
     vector<int> colors_;
     vector<NodeDegreePair> degrees_;
     int maxColors_;
-    DisjointSets set_;
 };

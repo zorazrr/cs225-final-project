@@ -1,16 +1,20 @@
 #include "welsh.h"
 
+/**
+ * Sets up the Welsh-Powell algorithm by setting up degrees, colors,
+ * and calling the Welsh-Powell method
+ * @param g the graph to execute the algorithm on
+ **/
 Welsh::Welsh(Graph g)
 {
     g_ = g;
     setUpDegrees();
-    setUpSet();
     setUpColors();
     executeWelsh();
 }
 
 /**
- * Fill in degrees with degree of each node
+ * Fills degrees with the degree of each node in descending order
  **/
 void Welsh::setUpDegrees()
 {
@@ -24,17 +28,9 @@ void Welsh::setUpDegrees()
     std::sort(degrees_.begin(), degrees_.end());
 }
 
-void Welsh::setUpSet() {
-    set_.addelements(g_.getNumNodes());
-    vector<Road*> roads = g_.getRoads();
-    for (Road* road : roads) {
-        set_.setunion(road->getStart(), road->getEnd());
-    }
-}
-
 /**
- * Fill in default colors
- * -1 represents uncolored nodes
+ * Fills colors with -1 for each node to represent that nodes are 
+ * uncolored
  **/
 void Welsh::setUpColors()
 {
@@ -44,53 +40,62 @@ void Welsh::setUpColors()
     }
 }
 
+/**
+ * Executes the Welsh-Powell algorithm to obtain an upper bound for the
+ * number of colors needed to color the graph
+ **/
 void Welsh::executeWelsh()
 {
     vector<NodeDegreePair> nodesToColor = degrees_;
     int currColor = 0;
-    while (!nodesToColor.empty())
-    {
-        vector<int> coloredNodes; // vector containing nodes corresponding to this color
-        for (size_t i = 0; i < nodesToColor.size(); i++)
-        {
-            int currNode = nodesToColor[i].getNode();
-            if (coloredNodes.empty() || set_.find(currNode) != set_.find(coloredNodes.at(0)))
-            {
-                coloredNodes.push_back(currNode);
-                colors_[currNode] = currColor;
-            }
-        }
-        for (int node : coloredNodes) {
-            for (size_t j = 0; j < nodesToColor.size(); j++) {
-                if (nodesToColor[j].getNode() == node) {
-                    nodesToColor.erase(nodesToColor.begin() + j);
-                    break;
-                }
-            }
+    for (size_t i = 0; i < nodesToColor.size(); i++) {
+        int currNode = nodesToColor[i].getNode();
+        if (colors_[currNode] != -1) continue;
+
+        vector<int> coloredNodes;
+        coloredNodes.push_back(currNode);
+        colors_[currNode] = currColor;
+
+        for (size_t j = i + 1; j < nodesToColor.size(); j++) {
+            int newNode = nodesToColor[j].getNode();
+            if (colors_[newNode] == -1 && !isAdjacent(newNode, coloredNodes)) {
+                coloredNodes.push_back(newNode);
+                colors_[newNode] = currColor;
+            } 
         }
         currColor++;
     }
     maxColors_ = currColor;
 }
 
+/**
+ * Prints the upper bound of colors needed to color the graph
+ **/
 void Welsh::printMaxColors() {
     std::cout << "The upper bound on the number of colors needed is " << maxColors_ << "." << std::endl;
 }
 
+/**
+ * Determines if the node inputted is adjacent to any of the nodes in
+ * coloredNodes. If it's not adjacent, it can be safely colored the 
+ * same color
+ * @param nodeToColor the node that can potentially be colored the 
+ * current color
+ * @param coloredNodes vector of nodes that have already been colored
+ * the current color
+ * @return true if nodeToColor is adjacent to 1+ nodes in coloredNodes
+ * (and therefore cannot be given the same color), false if not
+ **/
 bool Welsh::isAdjacent(int nodeToColor, vector<int> coloredNodes)
 {
-    vector<vector<Road *>> connections = g_.getConnections();
-    vector<Road *> roads = connections[nodeToColor];
-    for (auto road : roads)
-    {
-        for (int coloredNode : coloredNodes)
-        {
-            if (road->getEnd() == coloredNode || road->getStart() == coloredNode)
-                return true;
+    set<int> connected = g_.getConnected();
+
+    for (int coloredNode : coloredNodes) {
+        int a = nodeToColor < coloredNode? nodeToColor : coloredNode;
+        int b = nodeToColor < coloredNode? coloredNode : nodeToColor;
+        if (connected.count((a + b) * (a + b + 1) / 2 + a) == 1) {
+            return true;
         }
     }
     return false;
 }
-
-// note to self: need to make sure not in the same set as colored nodes
-// not just any node

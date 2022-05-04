@@ -40,6 +40,10 @@ void Graph::createRoads(string roads_file) {
 
         while (ifs >> id >> start >> end >> length) {
             roads_.push_back(new Road(id, start, end, length));
+            int a = start < end? start : end;
+            int b = start < end? end : start;
+            // cantor pairing function: unique & deterministic
+            connected_.insert((a + b) * (a + b + 1) / 2 + a);
         }
         ifs.close();
     } else {
