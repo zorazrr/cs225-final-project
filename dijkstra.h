@@ -1,6 +1,7 @@
 #pragma once
 
 #include "graph.h"
+#include "nodedistpair.cpp"
 
 #include <iostream>
 #include <fstream>
@@ -38,28 +39,4 @@ private:
     Graph g_;
     int start_;
     vector<pair<double, int>> paths_;
-};
-
-class NodePair {
-public:
-    NodePair(int node, double length) {
-        node_ = node;
-        length_ = length;
-    }
-
-    int getNode() const {
-        return node_;
-    }
-
-    double getLength() const {
-        return length_;
-    }
-
-    bool operator<(const NodePair other) const {
-        return (length_ > other.getLength());
-    }
-
-private:
-    int node_;
-    double length_;
 };
