@@ -20,7 +20,7 @@ void Graph::createNodes(string nodes_file) {
         double latitude;
 
         while (ifs >> id >> longitude >> latitude) {
-            nodes_.push_back(new Node(id, longitude, latitude));
+            nodes_.push_back(new Node(id, latitude, longitude));
             connections_.push_back(vector<Road*>());
         }
         ifs.close();

@@ -84,12 +84,12 @@ void Dijkstra::printPaths() {
 */
 void Dijkstra::printOnePath(int dest) {
     vector<int> path = getPath(dest);
-    std::cout << "Shortest path from " << start_ << " to " << dest << " is: ";
+    std::cout << "The shortest path from " << start_ << " to " << dest << " is: ";
     for (unsigned j = 0; j < path.size(); ++j) {
         std::cout << path.at(j) << " ";
     }
     std::cout << "\n";
-    std::cout << "The distance of the shortest path is: " << convertDist(paths_.at(dest).first) << "km" << std::endl;
+    std::cout << "The distance of the shortest path is: " << convertDist(paths_.at(dest).first) << "km." << std::endl;
 }
 
 /**
