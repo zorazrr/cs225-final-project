@@ -1,8 +1,3 @@
----
-date created: 2022-05-03 18:33
-date updated: 2022-05-03 20:44
----
-
 # CS225 Final Project: The Complete California Experience
 
 <p align="center">
