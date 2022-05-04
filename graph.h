@@ -26,7 +26,7 @@ public:
     void createConnections();
 
     // BFS Traversal given a starting node
-    void BFS(int id);
+    vector<int> BFS(int id);
     // Shortest Path
     void shortestPath();
 

@@ -10,4 +10,5 @@ void select(Graph& graph);
 void gps(Graph& graph);
 void tour(Graph& graph);
 void nearestAttractions(Graph& graph);
+void bfs(Graph& graph);
 KDTree<2> getTree(Graph& graph);

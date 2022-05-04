@@ -17,6 +17,8 @@
 #include <cctype>
 #include <locale>
 
+// KD Tree Tests
+
 TEST_CASE("KDTree::testSmallerDimVal Tests", "[weight=1][kdtree]") {
     vector<Point<3>> pts;
     KDTree<3> tree(pts);
@@ -89,6 +91,7 @@ TEST_CASE("KDTree::findNearestNeighbor (3D), testing that left recursion does no
   REQUIRE( tree.findNearestNeighbor(target) == expected );
 }
 
+// Graph Construction Tests
 
 vector<Road *> getSmallRoads()
 {
@@ -237,6 +240,7 @@ TEST_CASE("test_dijkstra_non_connected_3", "[weight=5][dijkstra]")
 }
 
 // Welsh-Powell Tests
+
 TEST_CASE("welsh_powell_small", "[weight=5][welsh]")
 {
     Graph g;
@@ -267,4 +271,26 @@ TEST_CASE("welsh_powell_disjoint", "[weight=5][welsh]")
     {
         REQUIRE(welshColors[i] == expectedColors[i]);
     }
+}
+
+// BFS Tests
+
+TEST_CASE("bfs_small", "[weight=5][bfs]")
+{
+    Graph g;
+    g.makeGraph("data/small_test_nodes.txt", "data/small_test_roads.txt");
+
+    vector<int> expectedBFS = {1, 2, 3, 4};
+
+    REQUIRE(g.BFS(1) == expectedBFS);
+}
+
+TEST_CASE("bfs_disjoint", "[weight=5][bfs]")
+{
+    Graph g;
+    g.makeGraph("data/test_disjoint_nodes.txt", "data/test_disjoint_roads.txt");
+
+    vector<int> expectedBFS = {6, 7, 8};
+
+    REQUIRE(g.BFS(6) == expectedBFS);
 }

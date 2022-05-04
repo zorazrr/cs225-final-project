@@ -62,8 +62,9 @@ void Graph::createConnections() {
     }
 }
 
-void Graph::BFS(int id) {
-    bool *visited = new bool[size_];
+vector<int> Graph::BFS(int id) {
+    bool visited [size_];
+    vector<int> toReturn;
     for(int i = 0; i < size_; i++) {
         visited[i] = false;
     }
@@ -73,6 +74,7 @@ void Graph::BFS(int id) {
 
     while(!q.empty()) {
         int temp = q.front();
+        toReturn.push_back(temp);
         std::cout << temp << " ";
         q.pop_front();
         std::vector<Road*> connected = connections_.at(temp);
@@ -83,4 +85,5 @@ void Graph::BFS(int id) {
             }
         }
     }
+    return toReturn;
 }

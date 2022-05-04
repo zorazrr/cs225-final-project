@@ -23,7 +23,7 @@ void welcome() {
  **/
 void select(Graph& graph) {
   std::cout << "-----------------------" << std::endl;
-  std::cout << "The Complete California Experience offers three components: 1) GPS, 2) Tour, and 3) Nearest Attractions." << std::endl;
+  std::cout << "The Complete California Experience offers three components: 1) GPS, 2) Sporadic Tour, 3) Nearest Attractions, 4) Lazy Tour." << std::endl;
   std::cout << "Enter the number corresponding to the component you're interested in, or enter '0' to exit." << std::endl;
   std::cout << "Remember that at any point the text box appears, you may enter '-1' to return to this selection page." << std::endl;
 
@@ -42,6 +42,9 @@ void select(Graph& graph) {
       break;
     case 3:
       nearestAttractions(graph);
+      break;
+    case 4: 
+      bfs(graph);
       break;
     default:
       select(graph);
@@ -161,6 +164,26 @@ void nearestAttractions(Graph& graph) {
       std::cout << "I'm not sure exactly what it is, but that doesn't matter! Have fun!" << std::endl;
       select(graph);
     }
+  } catch (const std::exception& e) {
+    select(graph);
+  }
+}
+
+/**
+ * Gives the path to a weird traveler to travel the entirety of Clalifornia 
+ * @param graph graph representation of the dataset
+ **/
+void bfs(Graph& graph) {
+  std::cout << "-----------------------" << std::endl;
+  std::cout << "Ok traveler, so you are lazy and want to only visit nearby connected scenic cluster! Now give me the node number you are currently at: " << std::endl;
+  std::cout << "(Node number ranges from 0 to 21047)" << std::endl;
+  int start;
+  std::cin >> start;
+  try {
+    std::cout << "Follow through this path! It will take you through the current scenic cluster you are at!" << std::endl;
+    graph.BFS(start);
+    std::cout << "\n";
+    select(graph);
   } catch (const std::exception& e) {
     select(graph);
   }
