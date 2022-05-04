@@ -113,13 +113,13 @@ vector<Road *> getSmallRoads()
 vector<Node *> getSmallNodes()
 {
     string nodes_file = "./data/small_test_nodes.txt";
+    vector<Node*> nodes;
 
-    vector<Node *> nodes;
-    Node *node1 = new Node(0, -121.904167, 41.974556);
-    Node *node2 = new Node(1, -121.902153, 41.974766);
-    Node *node3 = new Node(2, -121.896790, 41.988075);
-    Node *node4 = new Node(3, -115.257767, 33.832241);
-    Node *node5 = new Node(4, -122.404907, 39.053646);
+    Node *node1 = new Node(0, 41.974556, -121.904167);
+    Node *node2 = new Node(1, 41.974766, -121.902153);
+    Node *node3 = new Node(2, 41.988075, -121.896790);
+    Node *node4 = new Node(3, 33.832241, -115.257767);
+    Node *node5 = new Node(4, 39.053646, -122.404907);
 
     nodes.push_back(node1);
     nodes.push_back(node2);
@@ -152,7 +152,8 @@ TEST_CASE("test_create_roads", "[weight=5][graph]")
     vector<Road *> expectedRoads = getSmallRoads();
 
     Graph g;
-    vector<Road *> roads = g.createRoads("./data/small_test_roads.txt");
+    g.createRoads("./data/small_test_roads.txt");
+    vector<Road*> roads = g.getRoads();
 
     REQUIRE(expectedRoads.size() == roads.size());
 

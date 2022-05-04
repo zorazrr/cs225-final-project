@@ -11,8 +11,8 @@ void tests() {
     // Graph smallGraph;
     // smallGraph.makeGraph("data/test_disjoint_nodes.txt", "data/test_disjoint_roads.txt");
 
-    // Graph mediumGraph;
-    // mediumGraph.makeGraph("data/test_nodes.txt", "data/test_roads.txt");
+    Graph mediumGraph;
+    mediumGraph.makeGraph("data/test_nodes.txt", "data/test_roads.txt");
 
     // Graph largeGraph;
     // largeGraph.makeGraph("data/nodes.txt", "data/roads.txt");

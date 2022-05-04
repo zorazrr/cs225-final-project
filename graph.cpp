@@ -6,8 +6,8 @@ Graph::Graph() {
 
 void Graph::makeGraph(string nodes_file, string roads_file) {
     createNodes(nodes_file);
-    vector<Road*> roads = createRoads(roads_file);
-    createConnections(roads);
+    createRoads(roads_file);
+    createConnections();
     size_ = (int)(nodes_.size());
 }
 
@@ -29,9 +29,8 @@ void Graph::createNodes(string nodes_file) {
     }
 }
 
-vector<Road*> Graph::createRoads(string roads_file) {
+void Graph::createRoads(string roads_file) {
     ifstream ifs(roads_file);
-    vector<Road*> roads;
 
     if (ifs.is_open()) {
         int id;
@@ -40,19 +39,21 @@ vector<Road*> Graph::createRoads(string roads_file) {
         double length;
 
         while (ifs >> id >> start >> end >> length) {
-            roads.push_back(new Road(id, start, end, length));
+            roads_.push_back(new Road(id, start, end, length));
+            int a = start < end? start : end;
+            int b = start < end? end : start;
+            // cantor pairing function: unique & deterministic
+            connected_.insert((a + b) * (a + b + 1) / 2 + a);
         }
         ifs.close();
     } else {
         cout << "Unable to open roads file." << endl;
     }
-
-    return roads;
 }
 
-void Graph::createConnections(vector<Road*> roads) {
-    for (unsigned i = 0; i < roads.size(); ++i) {
-        Road* road = roads.at(i);
+void Graph::createConnections() {
+    for (unsigned i = 0; i < roads_.size(); ++i) {
+        Road* road = roads_.at(i);
         int startId = road->getStart();
         int endId = road->getEnd();
 

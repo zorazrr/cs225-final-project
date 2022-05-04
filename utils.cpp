@@ -101,10 +101,10 @@ void tour(Graph& graph) {
     select(graph);
     return;
   }
-  Graph mediumGraph;
-  mediumGraph.makeGraph("data/test_nodes.txt", "data/test_roads.txt");
 
-  Welsh welsh(mediumGraph);
+  std::cout << "Loading... this can take up to 5 minutes. Maybe check out the scenery around you?" << std::endl;
+
+  Welsh welsh(graph);
   welsh.printMaxColors();
 
   std::cout << "Enter a number from 1 to " << welsh.getMaxColors() << " corresponding to the tour you'd like to view. ";
@@ -118,9 +118,9 @@ void tour(Graph& graph) {
   }
 
   vector<int> colors = welsh.getColors();
-  for (int i = 0; i < mediumGraph.getNumNodes(); ++i) {
+  for (int i = 0; i < graph.getNumNodes(); ++i) {
     if (colors.at(i) == (color - 1)) {
-      std::cout << mediumGraph.getNodes().at(i)->getId() << ", ";
+      std::cout << graph.getNodes().at(i)->getId() << ", ";
     }
   }
   std::cout << "\n";
@@ -145,12 +145,12 @@ void nearestAttractions(Graph& graph) {
 
   try {
     std::cin >> latitude >> longitude;
-    // X (latitude) ranges from -114.294 to -124.389 (10.095)
-    // Y (longitude) ranges from 32.5413 to 42.0172 (9.4759)
-    if (latitude < -124.389343 || latitude > -114.294258 || longitude < 32.541302 || longitude > 42.017231) {
+    // X (longitude) ranges from -114.294 to -124.389 (10.095)
+    // Y (latitude) ranges from 32.5413 to 42.0172 (9.4759)
+    if (longitude < -124.389343 || longitude > -114.294258 || latitude < 32.541302 || latitude > 42.017231) {
       std::cout << "Oh no hold up! You are going out of California!" << std::endl;
-      std::cout << "The latitude of California goes from -124.389343 to -114.294258." << std::endl;
-      std::cout << "The longitude of California goes from 32.541302 to 42.017231." << std::endl;
+      std::cout << "The latitude of California goes from 32.541302 to 42.017231." << std::endl;
+      std::cout << "The longitude of California goes from -124.389343 to -114.294258." << std::endl;
       std::cout << "Let's try it again:" << std::endl;
       nearestAttractions(graph);
     } else {
